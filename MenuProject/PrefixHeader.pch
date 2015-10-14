@@ -1,0 +1,17 @@
+//
+//  PrefixHeader.pch
+//  MenuProject
+//
+//  Created by mac- t4 on 15/10/12.
+//  Copyright (c) 2015年 上海科文麦格里实业有限公司. All rights reserved.
+//
+
+#ifndef MenuProject_PrefixHeader_pch
+#define MenuProject_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "Public.h"
+
+#endif
