@@ -16,6 +16,11 @@
 		046088FD1BCB876E00A57899 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046088FB1BCB876E00A57899 /* LaunchScreen.xib */; };
 		046089091BCB876F00A57899 /* MenuProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 046089081BCB876F00A57899 /* MenuProjectTests.m */; };
 		0475BB771BCE3C93006F8043 /* UIImage+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0475BB761BCE3C93006F8043 /* UIImage+UIColor.m */; };
+		0475BB7F1BCE3D43006F8043 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 0475BB7A1BCE3D43006F8043 /* 0.png */; };
+		0475BB801BCE3D43006F8043 /* advert1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0475BB7B1BCE3D43006F8043 /* advert1.png */; };
+		0475BB811BCE3D43006F8043 /* advert2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0475BB7C1BCE3D43006F8043 /* advert2.png */; };
+		0475BB821BCE3D43006F8043 /* advert3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0475BB7D1BCE3D43006F8043 /* advert3.png */; };
+		0475BB831BCE3D43006F8043 /* headView.png in Resources */ = {isa = PBXBuildFile; fileRef = 0475BB7E1BCE3D43006F8043 /* headView.png */; };
 		04B5C80F1BCBA11800AA5E1A /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B5C80E1BCBA11800AA5E1A /* HomeViewController.m */; };
 		04B5C8121BCBA12400AA5E1A /* LifeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B5C8111BCBA12400AA5E1A /* LifeViewController.m */; };
 		04B5C8151BCBA13800AA5E1A /* SurpriseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B5C8141BCBA13800AA5E1A /* SurpriseViewController.m */; };
@@ -51,6 +56,11 @@
 		046089081BCB876F00A57899 /* MenuProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuProjectTests.m; sourceTree = "<group>"; };
 		0475BB751BCE3C93006F8043 /* UIImage+UIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIColor.h"; sourceTree = "<group>"; };
 		0475BB761BCE3C93006F8043 /* UIImage+UIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UIColor.m"; sourceTree = "<group>"; };
+		0475BB7A1BCE3D43006F8043 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
+		0475BB7B1BCE3D43006F8043 /* advert1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = advert1.png; sourceTree = "<group>"; };
+		0475BB7C1BCE3D43006F8043 /* advert2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = advert2.png; sourceTree = "<group>"; };
+		0475BB7D1BCE3D43006F8043 /* advert3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = advert3.png; sourceTree = "<group>"; };
+		0475BB7E1BCE3D43006F8043 /* headView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headView.png; sourceTree = "<group>"; };
 		04B5C7EF1BCB8D4F00AA5E1A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		04B5C7F61BCB90B000AA5E1A /* Public.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Public.h; sourceTree = "<group>"; };
 		04B5C80D1BCBA11800AA5E1A /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -130,6 +140,7 @@
 		046088E91BCB876E00A57899 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0475BB791BCE3D43006F8043 /* 商店 */,
 				046088EA1BCB876E00A57899 /* Info.plist */,
 				046088EB1BCB876E00A57899 /* main.m */,
 				04B5C7EF1BCB8D4F00AA5E1A /* PrefixHeader.pch */,
@@ -161,6 +172,18 @@
 				0475BB761BCE3C93006F8043 /* UIImage+UIColor.m */,
 			);
 			name = depends;
+			sourceTree = "<group>";
+		};
+		0475BB791BCE3D43006F8043 /* 商店 */ = {
+			isa = PBXGroup;
+			children = (
+				0475BB7A1BCE3D43006F8043 /* 0.png */,
+				0475BB7B1BCE3D43006F8043 /* advert1.png */,
+				0475BB7C1BCE3D43006F8043 /* advert2.png */,
+				0475BB7D1BCE3D43006F8043 /* advert3.png */,
+				0475BB7E1BCE3D43006F8043 /* headView.png */,
+			);
+			path = "商店";
 			sourceTree = "<group>";
 		};
 		04B5C7F01BCB903300AA5E1A /* Controller */ = {
@@ -349,9 +372,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				046088F81BCB876E00A57899 /* Main.storyboard in Resources */,
+				0475BB811BCE3D43006F8043 /* advert2.png in Resources */,
+				0475BB7F1BCE3D43006F8043 /* 0.png in Resources */,
 				046088FD1BCB876E00A57899 /* LaunchScreen.xib in Resources */,
 				046088FA1BCB876E00A57899 /* Images.xcassets in Resources */,
 				04B5C81A1BCBA23800AA5E1A /* menuData.plist in Resources */,
+				0475BB801BCE3D43006F8043 /* advert1.png in Resources */,
+				0475BB831BCE3D43006F8043 /* headView.png in Resources */,
+				0475BB821BCE3D43006F8043 /* advert3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
