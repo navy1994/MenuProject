@@ -15,6 +15,7 @@
 		046088FA1BCB876E00A57899 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046088F91BCB876E00A57899 /* Images.xcassets */; };
 		046088FD1BCB876E00A57899 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046088FB1BCB876E00A57899 /* LaunchScreen.xib */; };
 		046089091BCB876F00A57899 /* MenuProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 046089081BCB876F00A57899 /* MenuProjectTests.m */; };
+		0475BB771BCE3C93006F8043 /* UIImage+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0475BB761BCE3C93006F8043 /* UIImage+UIColor.m */; };
 		04B5C80F1BCBA11800AA5E1A /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B5C80E1BCBA11800AA5E1A /* HomeViewController.m */; };
 		04B5C8121BCBA12400AA5E1A /* LifeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B5C8111BCBA12400AA5E1A /* LifeViewController.m */; };
 		04B5C8151BCBA13800AA5E1A /* SurpriseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B5C8141BCBA13800AA5E1A /* SurpriseViewController.m */; };
@@ -48,6 +49,8 @@
 		046089021BCB876F00A57899 /* MenuProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MenuProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		046089071BCB876F00A57899 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		046089081BCB876F00A57899 /* MenuProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuProjectTests.m; sourceTree = "<group>"; };
+		0475BB751BCE3C93006F8043 /* UIImage+UIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIColor.h"; sourceTree = "<group>"; };
+		0475BB761BCE3C93006F8043 /* UIImage+UIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UIColor.m"; sourceTree = "<group>"; };
 		04B5C7EF1BCB8D4F00AA5E1A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		04B5C7F61BCB90B000AA5E1A /* Public.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Public.h; sourceTree = "<group>"; };
 		04B5C80D1BCBA11800AA5E1A /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -151,6 +154,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0475BB781BCE3C98006F8043 /* depends */ = {
+			isa = PBXGroup;
+			children = (
+				0475BB751BCE3C93006F8043 /* UIImage+UIColor.h */,
+				0475BB761BCE3C93006F8043 /* UIImage+UIColor.m */,
+			);
+			name = depends;
+			sourceTree = "<group>";
+		};
 		04B5C7F01BCB903300AA5E1A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +199,7 @@
 		04B5C7F41BCB905D00AA5E1A /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				0475BB781BCE3C98006F8043 /* depends */,
 				04B5C7F51BCB906D00AA5E1A /* PublicClass */,
 			);
 			name = Others;
@@ -391,6 +404,7 @@
 			files = (
 				046088EF1BCB876E00A57899 /* AppDelegate.m in Sources */,
 				046088EC1BCB876E00A57899 /* main.m in Sources */,
+				0475BB771BCE3C93006F8043 /* UIImage+UIColor.m in Sources */,
 				046088F51BCB876E00A57899 /* ViewController.m in Sources */,
 				046088F21BCB876E00A57899 /* MenuProject.xcdatamodeld in Sources */,
 				04B5C8121BCBA12400AA5E1A /* LifeViewController.m in Sources */,

@@ -8,6 +8,11 @@
 
 #import "HomeViewController.h"
 
+#import "Masonry.h"
+#import <DYMRollingBanner/DYMRollingBannerVC.h>
+#import "UIImage+UIColor.h"
+
+
 @interface HomeViewController ()
 
 @end
