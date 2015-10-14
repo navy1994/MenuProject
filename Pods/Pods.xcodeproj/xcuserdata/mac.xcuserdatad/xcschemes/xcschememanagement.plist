@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DYMRollingBanner-DYMRollingBanner.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>DYMRollingBanner.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -20,6 +30,11 @@
 			<false/>
 		</dict>
 		<key>MJRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Masonry.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -42,7 +57,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>13845E835DF14D315BBF1457322356F7</key>
+		<key>1C81DEAE4512F14E820D1F372971B2DA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>451B1F47137B67962979300493B688F7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,27 +72,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>6DDC50CEFFBF28050C95FB3C5129ACD2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9CFF959D76EA7AB305560E90DAF725D2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A4688028B7034F6A2139FF9AAB4C4F46</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B281DA29A9C3EDFB45BA53651F6BA611</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C25E15FF273929146D939E6E7253EE31</key>
+		<key>CFDBCFD2A3300D5C15E75382814DD8C4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C36A923798F1A2387E8176481DDBA3B9</key>
+		<key>D558F3F67C058AC5CB48A26202BA0E89</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D986F89876D89BAA22DEF96266637DA5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F4829F8A4F07C276D0305B552B836DC9</key>
+		<key>E6EBBCB01FCDCDFB95D4524007E69605</key>
 		<dict>
 			<key>primary</key>
 			<true/>
