@@ -7,11 +7,15 @@
 //
 
 #import "HomeViewController.h"
+#import "NetworkSingleton.h"
+#import "NetworkSingleton.h"
 
 #import "Masonry.h"
 #import <DYMRollingBanner/DYMRollingBannerVC.h>
 #import "UIImage+UIColor.h"
 #import "UISearchView.h"
+
+#import "HomeCategoryCell.h"
 
 const CGFloat LSWHeaderViewHeight = 200;
 
@@ -23,20 +27,42 @@ const CGFloat LSWHeaderViewHeight = 200;
     MASConstraint *_headerViewHeightConstraint;//高的约束
     
     UISearchView *_searchView;
+    
+    UIActivityIndicatorView *_activityView;
 }
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UISearchView *adverSearchView;
 
+
+
+/**
+ *  请求数据
+ */
+- (void)getAdvertImageData;
+
 @end
 
 @implementation HomeViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    NSLog(@"viewWillApper");
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    NSLog(@"viewDidapper");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    NSLog(@"viewDidLoad");
     [self setupUI];
+    
+    //[self getAdvertImageData];
+    
 }
 
 - (void)setupUI{
@@ -47,6 +73,7 @@ const CGFloat LSWHeaderViewHeight = 200;
     _tableView = [[UITableView alloc]initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
     [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     _tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    _tableView.sectionHeaderHeight = 5;
     _tableView.separatorStyle = NO;
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -92,31 +119,118 @@ const CGFloat LSWHeaderViewHeight = 200;
     
 }
 
+//- (void)getAdvertImageData{
+//    NSString *dayStr = @"早餐";
+//    NSString *urlStr = [NSString stringWithFormat:@"http://apis.juhe.cn/cook/query?key=%s&menu=%@&rn=10&pn=3",appkey,dayStr];
+//    [_activityView startAnimating];
+//    [[NetworkSingleton sharedManager] getShopResult:nil url:urlStr successBlock:^(id responseBody){
+//           // NSLog(@"店铺详情请求成功");
+//           // NSLog(@"result=%@",responseBody);
+//            NSDictionary *result = [responseBody objectForKey:@"result"];
+//            if (result) {
+//                NSLog(@"结果：%@",result);
+//                NSMutableArray *imageArray = [[NSMutableArray alloc]init];
+//                for (int i=0; i<3; i++) {
+//                    UIImage *image = [[[[result objectForKey:@"data"]objectAtIndex:rand()%10]objectForKey:@"albums"]objectAtIndex:0];
+//                    NSLog(@"image%@",image);
+//                    [imageArray addObject:image];
+//                }
+//                
+//                NSLog(@"图片%@",_advertArray);
+//                _rollingBannerVC.rollingImages = imageArray;
+//            }
+//            
+//            [_activityView stopAnimating];
+//            
+//        } failureBlock:^(NSString *error){
+//            NSLog(@"店铺详情请求失败：%@",error);
+//        }];
+//
+//}
+
 #pragma mark - tableViewDelegate&DataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 150;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 5;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return 1;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    if (cell==nil) {
-        cell=[[UITableViewCell alloc]init];
+    if (indexPath.section == 0) {
+        static NSString *cellIndentifier = @"menucell";
+        HomeCategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
+        if (cell == nil) {
+            cell = [[HomeCategoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }else if(indexPath.section == 1){
+        UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+
+//        if (_rushArray.count == 0) {
+//            static NSString *cellIndentifier = @"nomorecell";
+//            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
+//            if (cell == nil) {
+//                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
+//            }
+//            
+//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//            
+//            return cell;
+//        }else{
+//            static NSString *cellIndentifier = @"rushcell";
+//            RushCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
+//            if (cell == nil) {
+//                cell = [[RushCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
+//            }
+//            
+//            if (_rushArray.count!=0) {
+//                [cell setRushData:_rushArray];
+//            }
+//            cell.delegate = self;
+//            
+//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//            return cell;
+//        }
+        
+    }else if (indexPath.section == 2){
+        UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }else if(indexPath.section == 3){
+        UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }else{//推荐
+        UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
     }
-    
-    cell.contentView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    return cell;
+//    cell.contentView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView

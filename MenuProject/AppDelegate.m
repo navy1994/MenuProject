@@ -11,6 +11,7 @@
 #import "LifeViewController.h"
 #import "SurpriseViewController.h"
 #import "MineViewController.h"
+#import "NetworkSingleton.h"
 
 @interface AppDelegate ()
 
@@ -90,6 +91,21 @@
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [self.window makeKeyAndVisible];
+    
+//    NSString *dayStr = @"早餐";
+//    NSString *urlStr = [NSString stringWithFormat:@"http://apis.juhe.cn/cook/query?key=%s&menu=%@&rn=10&pn=3",appkey,dayStr];
+//    [[NetworkSingleton sharedManager] getShopResult:nil url:urlStr successBlock:^(id responseBody){
+//        NSLog(@"店铺详情请求成功");
+//        NSLog(@"result=%@",responseBody);
+//        NSDictionary *result = [responseBody objectForKey:@"result"];
+//        if (result) {
+//            homeViewController.advertArray = [result objectForKey:@"data"];
+//        }
+//        
+//    } failureBlock:^(NSString *error){
+//        NSLog(@"店铺详情请求失败：%@",error);
+//    }];
+
     
 }
 

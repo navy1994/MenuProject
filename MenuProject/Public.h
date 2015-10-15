@@ -49,4 +49,6 @@
 //7.
 #define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
 
+#define appkey "8ab8ff7a0139434eb7cd2411326430e8"
+
 #endif

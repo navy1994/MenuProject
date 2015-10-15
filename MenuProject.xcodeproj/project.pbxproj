@@ -17,6 +17,8 @@
 		046089091BCB876F00A57899 /* MenuProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 046089081BCB876F00A57899 /* MenuProjectTests.m */; };
 		04615AE51BCF80CA00EF596F /* UISearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04615AE41BCF80CA00EF596F /* UISearchView.m */; };
 		04615AE71BCF823E00EF596F /* icon_homepage_search.png in Resources */ = {isa = PBXBuildFile; fileRef = 04615AE61BCF823E00EF596F /* icon_homepage_search.png */; };
+		04615AF21BCF8E8000EF596F /* NetworkSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04615AF11BCF8E8000EF596F /* NetworkSingleton.m */; };
+		04615AFA1BCF98EA00EF596F /* HomeCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04615AF91BCF98EA00EF596F /* HomeCategoryCell.m */; };
 		0475BB771BCE3C93006F8043 /* UIImage+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0475BB761BCE3C93006F8043 /* UIImage+UIColor.m */; };
 		0475BB7F1BCE3D43006F8043 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 0475BB7A1BCE3D43006F8043 /* 0.png */; };
 		0475BB801BCE3D43006F8043 /* advert1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0475BB7B1BCE3D43006F8043 /* advert1.png */; };
@@ -59,6 +61,10 @@
 		04615AE31BCF80CA00EF596F /* UISearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISearchView.h; sourceTree = "<group>"; };
 		04615AE41BCF80CA00EF596F /* UISearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISearchView.m; sourceTree = "<group>"; };
 		04615AE61BCF823E00EF596F /* icon_homepage_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_homepage_search.png; sourceTree = "<group>"; };
+		04615AF01BCF8E8000EF596F /* NetworkSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkSingleton.h; sourceTree = "<group>"; };
+		04615AF11BCF8E8000EF596F /* NetworkSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkSingleton.m; sourceTree = "<group>"; };
+		04615AF81BCF98EA00EF596F /* HomeCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCategoryCell.h; sourceTree = "<group>"; };
+		04615AF91BCF98EA00EF596F /* HomeCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCategoryCell.m; sourceTree = "<group>"; };
 		0475BB751BCE3C93006F8043 /* UIImage+UIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIColor.h"; sourceTree = "<group>"; };
 		0475BB761BCE3C93006F8043 /* UIImage+UIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UIColor.m"; sourceTree = "<group>"; };
 		0475BB7A1BCE3D43006F8043 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
@@ -171,6 +177,33 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		04615AEF1BCF8E8000EF596F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				04615AF01BCF8E8000EF596F /* NetworkSingleton.h */,
+				04615AF11BCF8E8000EF596F /* NetworkSingleton.m */,
+			);
+			name = Network;
+			path = Others/Network;
+			sourceTree = "<group>";
+		};
+		04615AF31BCF987900EF596F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				04615AF41BCF988900EF596F /* HomeTableCell */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		04615AF41BCF988900EF596F /* HomeTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				04615AF81BCF98EA00EF596F /* HomeCategoryCell.h */,
+				04615AF91BCF98EA00EF596F /* HomeCategoryCell.m */,
+			);
+			name = HomeTableCell;
+			sourceTree = "<group>";
+		};
 		0475BB781BCE3C98006F8043 /* depends */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +239,7 @@
 		04B5C7F11BCB903E00AA5E1A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				04615AF31BCF987900EF596F /* Home */,
 				04615AE31BCF80CA00EF596F /* UISearchView.h */,
 				04615AE41BCF80CA00EF596F /* UISearchView.m */,
 			);
@@ -230,6 +264,7 @@
 		04B5C7F41BCB905D00AA5E1A /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				04615AEF1BCF8E8000EF596F /* Network */,
 				0475BB781BCE3C98006F8043 /* depends */,
 				04B5C7F51BCB906D00AA5E1A /* PublicClass */,
 			);
@@ -439,12 +474,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04615AFA1BCF98EA00EF596F /* HomeCategoryCell.m in Sources */,
 				046088EF1BCB876E00A57899 /* AppDelegate.m in Sources */,
 				046088EC1BCB876E00A57899 /* main.m in Sources */,
 				0475BB771BCE3C93006F8043 /* UIImage+UIColor.m in Sources */,
 				046088F51BCB876E00A57899 /* ViewController.m in Sources */,
 				046088F21BCB876E00A57899 /* MenuProject.xcdatamodeld in Sources */,
 				04B5C8121BCBA12400AA5E1A /* LifeViewController.m in Sources */,
+				04615AF21BCF8E8000EF596F /* NetworkSingleton.m in Sources */,
 				04615AE51BCF80CA00EF596F /* UISearchView.m in Sources */,
 				04B5C80F1BCBA11800AA5E1A /* HomeViewController.m in Sources */,
 				04B5C8151BCBA13800AA5E1A /* SurpriseViewController.m in Sources */,
@@ -580,6 +617,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MenuProject/PrefixHeader.pch";
 				INFOPLIST_FILE = MenuProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MenuProject/JuheApisSDK",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -592,6 +633,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MenuProject/PrefixHeader.pch";
 				INFOPLIST_FILE = MenuProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MenuProject/JuheApisSDK",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
