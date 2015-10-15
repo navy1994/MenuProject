@@ -15,6 +15,8 @@
 		046088FA1BCB876E00A57899 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046088F91BCB876E00A57899 /* Images.xcassets */; };
 		046088FD1BCB876E00A57899 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046088FB1BCB876E00A57899 /* LaunchScreen.xib */; };
 		046089091BCB876F00A57899 /* MenuProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 046089081BCB876F00A57899 /* MenuProjectTests.m */; };
+		04615AE51BCF80CA00EF596F /* UISearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04615AE41BCF80CA00EF596F /* UISearchView.m */; };
+		04615AE71BCF823E00EF596F /* icon_homepage_search.png in Resources */ = {isa = PBXBuildFile; fileRef = 04615AE61BCF823E00EF596F /* icon_homepage_search.png */; };
 		0475BB771BCE3C93006F8043 /* UIImage+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0475BB761BCE3C93006F8043 /* UIImage+UIColor.m */; };
 		0475BB7F1BCE3D43006F8043 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 0475BB7A1BCE3D43006F8043 /* 0.png */; };
 		0475BB801BCE3D43006F8043 /* advert1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0475BB7B1BCE3D43006F8043 /* advert1.png */; };
@@ -54,6 +56,9 @@
 		046089021BCB876F00A57899 /* MenuProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MenuProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		046089071BCB876F00A57899 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		046089081BCB876F00A57899 /* MenuProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuProjectTests.m; sourceTree = "<group>"; };
+		04615AE31BCF80CA00EF596F /* UISearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISearchView.h; sourceTree = "<group>"; };
+		04615AE41BCF80CA00EF596F /* UISearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISearchView.m; sourceTree = "<group>"; };
+		04615AE61BCF823E00EF596F /* icon_homepage_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_homepage_search.png; sourceTree = "<group>"; };
 		0475BB751BCE3C93006F8043 /* UIImage+UIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIColor.h"; sourceTree = "<group>"; };
 		0475BB761BCE3C93006F8043 /* UIImage+UIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UIColor.m"; sourceTree = "<group>"; };
 		0475BB7A1BCE3D43006F8043 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
@@ -140,6 +145,7 @@
 		046088E91BCB876E00A57899 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				04615AE61BCF823E00EF596F /* icon_homepage_search.png */,
 				0475BB791BCE3D43006F8043 /* 商店 */,
 				046088EA1BCB876E00A57899 /* Info.plist */,
 				046088EB1BCB876E00A57899 /* main.m */,
@@ -200,6 +206,8 @@
 		04B5C7F11BCB903E00AA5E1A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				04615AE31BCF80CA00EF596F /* UISearchView.h */,
+				04615AE41BCF80CA00EF596F /* UISearchView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -379,6 +387,7 @@
 				04B5C81A1BCBA23800AA5E1A /* menuData.plist in Resources */,
 				0475BB801BCE3D43006F8043 /* advert1.png in Resources */,
 				0475BB831BCE3D43006F8043 /* headView.png in Resources */,
+				04615AE71BCF823E00EF596F /* icon_homepage_search.png in Resources */,
 				0475BB821BCE3D43006F8043 /* advert3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,6 +445,7 @@
 				046088F51BCB876E00A57899 /* ViewController.m in Sources */,
 				046088F21BCB876E00A57899 /* MenuProject.xcdatamodeld in Sources */,
 				04B5C8121BCBA12400AA5E1A /* LifeViewController.m in Sources */,
+				04615AE51BCF80CA00EF596F /* UISearchView.m in Sources */,
 				04B5C80F1BCBA11800AA5E1A /* HomeViewController.m in Sources */,
 				04B5C8151BCBA13800AA5E1A /* SurpriseViewController.m in Sources */,
 				04B5C8181BCBA14700AA5E1A /* MineViewController.m in Sources */,

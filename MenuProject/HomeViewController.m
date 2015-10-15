@@ -11,8 +11,9 @@
 #import "Masonry.h"
 #import <DYMRollingBanner/DYMRollingBannerVC.h>
 #import "UIImage+UIColor.h"
+#import "UISearchView.h"
 
-const CGFloat LSWHeaderViewHeight = 180;
+const CGFloat LSWHeaderViewHeight = 200;
 
 @interface HomeViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>{
     DYMRollingBannerVC      *_rollingBannerVC;
@@ -20,9 +21,13 @@ const CGFloat LSWHeaderViewHeight = 180;
     MASConstraint *_headerViewWidthConstraint;//宽的约束
     MASConstraint *_headerViewTopConstraint;//上边的约束
     MASConstraint *_headerViewHeightConstraint;//高的约束
+    
+    UISearchView *_searchView;
 }
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UISearchBar *searchBar;
+@property (nonatomic, strong) UISearchView *adverSearchView;
 
 @end
 
@@ -30,16 +35,14 @@ const CGFloat LSWHeaderViewHeight = 180;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
     [self setupUI];
 }
 
 - (void)setupUI{
-    self.automaticallyAdjustsScrollViewInsets = NO;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[[UIColor clearColor] colorWithAlphaComponent:0]] forBarMetrics:UIBarMetricsDefault];
+    self.automaticallyAdjustsScrollViewInsets=NO;
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-    self.navigationController.navigationBarHidden = YES;
     
     _tableView = [[UITableView alloc]initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
     [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
@@ -77,6 +80,16 @@ const CGFloat LSWHeaderViewHeight = 180;
     
     [_rollingBannerVC startRolling];
     
+    self.adverSearchView = [[UISearchView alloc]initWithFrame:CGRectMake(10, -60, screen_width-20, 30)];
+    [_tableView addSubview:_adverSearchView];
+    
+    //自定义标题
+    _searchView = [[UISearchView alloc]initWithFrame:CGRectMake(10, 0, screen_width-20, 30)];
+    
+    
+    self.navigationItem.titleView = _searchView;
+    _searchView.alpha = 0;
+    
 }
 
 #pragma mark - tableViewDelegate&DataSource
@@ -90,7 +103,7 @@ const CGFloat LSWHeaderViewHeight = 180;
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 10;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -116,13 +129,16 @@ const CGFloat LSWHeaderViewHeight = 180;
         _headerViewWidthConstraint.offset = _tableView.frame.size.width + fabs(xOffset) * 2;
         _headerViewHeightConstraint.offset = -yOffset;
     }
-    //    CGFloat alpha = (yOffset + LSWHeaderViewHeight)/LSWHeaderViewHeight;
-    //    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[ColorRGB(94.0, 158.0, 236.0) colorWithAlphaComponent:alpha]] forBarMetrics:UIBarMetricsDefault];
-    //    alpha = fabs(alpha);
-    //    alpha = fabs(1 - alpha);
-    //    alpha = alpha < 0.5 ? 0.5 : alpha;
-    //    _rollingBannerVC.view.alpha = alpha;
+        CGFloat alpha = (yOffset + LSWHeaderViewHeight)/LSWHeaderViewHeight;
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[RGB(260.0, 260.0, 248.0) colorWithAlphaComponent:alpha]] forBarMetrics:UIBarMetricsDefault];
+    _searchView.alpha = alpha;
+//        alpha = fabs(alpha);
+//        alpha = fabs(1 - alpha);
+//        alpha = alpha < 0.5 ? 0.5 : alpha;
+//        _rollingBannerVC.view.alpha = alpha;
 }
+
+
 
 
 - (void)didReceiveMemoryWarning {
