@@ -680,6 +680,7 @@
 			baseConfigurationReference = 6334964D545FDB1309025FDC /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Linhai Shen (RRQ8V6YY29)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MenuProject/PrefixHeader.pch";
 				INFOPLIST_FILE = MenuProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -688,6 +689,7 @@
 					"$(PROJECT_DIR)/MenuProject/JuheApisSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1eab743f-52f6-4051-80f4-ab62a026e5b5";
 			};
 			name = Debug;
 		};
@@ -696,6 +698,7 @@
 			baseConfigurationReference = 359C2BA6842A918F2812D364 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Linhai Shen (RRQ8V6YY29)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MenuProject/PrefixHeader.pch";
 				INFOPLIST_FILE = MenuProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -704,6 +707,7 @@
 					"$(PROJECT_DIR)/MenuProject/JuheApisSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1eab743f-52f6-4051-80f4-ab62a026e5b5";
 			};
 			name = Release;
 		};

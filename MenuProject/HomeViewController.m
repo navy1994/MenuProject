@@ -52,6 +52,8 @@ const CGFloat LSWHeaderViewHeight = 200;
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     NSLog(@"viewWillApper");
+    //重新加载
+    [self setupUI];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -116,8 +118,6 @@ const CGFloat LSWHeaderViewHeight = 200;
     
     //自定义标题
     _searchView = [[UISearchView alloc]initWithFrame:CGRectMake(10, 0, screen_width-20, 30)];
-    
-    
     self.navigationItem.titleView = _searchView;
     _searchView.alpha = 0;
     
@@ -245,7 +245,7 @@ const CGFloat LSWHeaderViewHeight = 200;
     }
         CGFloat alpha = (yOffset + LSWHeaderViewHeight)/LSWHeaderViewHeight;
         [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[RGB(260.0, 260.0, 248.0) colorWithAlphaComponent:alpha]] forBarMetrics:UIBarMetricsDefault];
-    _searchView.alpha = alpha;
+         _searchView.alpha = alpha;
 //        alpha = fabs(alpha);
 //        alpha = fabs(1 - alpha);
 //        alpha = alpha < 0.5 ? 0.5 : alpha;
