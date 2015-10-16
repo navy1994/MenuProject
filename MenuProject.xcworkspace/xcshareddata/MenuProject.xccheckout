@@ -14,6 +14,8 @@
 		<string>https://github.com/navy1994/iOS-demo.git</string>
 		<key>CCE3D103D8CEFF25A468F8D162A011C9CF84E92A</key>
 		<string>github.com:navy1994/MenuProject.git</string>
+		<key>E0647A72A0C1C9D78EA44BB29D90BA7E6B16FC32</key>
+		<string>https://github.com/jokeface/LjjUISegmentedControl.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>MenuProject.xcworkspace</string>
@@ -23,6 +25,8 @@
 		<string>../..</string>
 		<key>CCE3D103D8CEFF25A468F8D162A011C9CF84E92A</key>
 		<string>..</string>
+		<key>E0647A72A0C1C9D78EA44BB29D90BA7E6B16FC32</key>
+		<string>../MenuProject/LjjUISegmentedControl/</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:navy1994/MenuProject.git</string>
@@ -39,6 +43,14 @@
 			<string>6D902CB2432A9B3595F3365BC8CF306A394A8366</string>
 			<key>IDESourceControlWCCName</key>
 			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E0647A72A0C1C9D78EA44BB29D90BA7E6B16FC32</string>
+			<key>IDESourceControlWCCName</key>
+			<string>LjjUISegmentedControl</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

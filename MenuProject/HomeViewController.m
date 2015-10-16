@@ -5,6 +5,7 @@
 //  Created by mac- t4 on 15/10/12.
 //  Copyright (c) 2015年 上海科文麦格里实业有限公司. All rights reserved.
 //
+#import "TapAdvertViewController.h"
 
 #import "HomeViewController.h"
 #import "NetworkSingleton.h"
@@ -108,6 +109,9 @@ const CGFloat LSWHeaderViewHeight = 200;
     
     [_rollingBannerVC addBannerTapHandler:^(NSInteger whichIndex) {
         NSLog(@"banner tapped, index = %@", @(whichIndex));
+        TapAdvertViewController *tapViewController = [[TapAdvertViewController alloc]init];
+        [self.navigationController pushViewController:tapViewController animated:NO];
+        
     }];
     
     [_rollingBannerVC startRolling];

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "669B052FDB281CBDBB707B8F"
+               BlueprintIdentifier = "65148E4A91F3A527A4D77C31"
                BuildableName = "DYMRollingBanner.bundle"
                BlueprintName = "DYMRollingBanner-DYMRollingBanner"
                ReferencedContainer = "container:Pods.xcodeproj">

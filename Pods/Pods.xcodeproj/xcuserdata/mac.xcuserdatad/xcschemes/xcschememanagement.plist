@@ -54,15 +54,35 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>YAScrollSegmentControl-YAScrollSegmentControl.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>YAScrollSegmentControl.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1C81DEAE4512F14E820D1F372971B2DA</key>
+		<key>0D86D20580E0052223DA005504872E20</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>451B1F47137B67962979300493B688F7</key>
+		<key>2006DD8439315CE4123A2EE61D136F0C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4D1F6AF3DD1CA6D5E7A920849FB4090A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>533956348074A4E8DB24849E27F8BAF6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,17 +92,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6DDC50CEFFBF28050C95FB3C5129ACD2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9CFF959D76EA7AB305560E90DAF725D2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A4688028B7034F6A2139FF9AAB4C4F46</key>
+		<key>77607295FC01443E49294897F092AF0C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,17 +102,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CFDBCFD2A3300D5C15E75382814DD8C4</key>
+		<key>B8B8D5E2DC5594128783FE77C4341C45</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D558F3F67C058AC5CB48A26202BA0E89</key>
+		<key>BFE45EB528539C2A61739EEAF2F06A0A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E6EBBCB01FCDCDFB95D4524007E69605</key>
+		<key>CC4BD1F45F1B72B34F02D44DBDA10D7C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CD23CD7602B770284CC9802C39DDB215</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F2EC1142D71534F58944B43EAD3360B1</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -31,6 +31,7 @@ PODS:
   - SDWebImage/Core (3.7.3)
   - SVProgressHUD (1.1.3)
   - UMengAnalytics (3.6.4)
+  - YAScrollSegmentControl (0.1.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6.0)
@@ -42,6 +43,7 @@ DEPENDENCIES:
   - SDWebImage (~> 3.7.3)
   - SVProgressHUD
   - UMengAnalytics
+  - YAScrollSegmentControl (~> 0.1.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
@@ -53,5 +55,6 @@ SPEC CHECKSUMS:
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
   UMengAnalytics: d24fb5200e13d2874f36b6337bc129b96511c54e
+  YAScrollSegmentControl: c96512f76b231e3cd6ef02a9da073e807542ad09
 
 COCOAPODS: 0.38.2

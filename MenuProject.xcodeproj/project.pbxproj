@@ -29,6 +29,7 @@
 		046737241BD0AAC3002E2665 /* HomeKnowledgeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046737231BD0AAC3002E2665 /* HomeKnowledgeCell.m */; };
 		046737271BD0AB0B002E2665 /* HomeEndCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046737261BD0AB0B002E2665 /* HomeEndCell.m */; };
 		0467372A1BD0AB43002E2665 /* KnowledgeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 046737291BD0AB43002E2665 /* KnowledgeCellView.m */; };
+		046737301BD0DE82002E2665 /* TapAdvertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467372F1BD0DE82002E2665 /* TapAdvertViewController.m */; };
 		0475BB771BCE3C93006F8043 /* UIImage+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0475BB761BCE3C93006F8043 /* UIImage+UIColor.m */; };
 		0475BB7F1BCE3D43006F8043 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 0475BB7A1BCE3D43006F8043 /* 0.png */; };
 		0475BB801BCE3D43006F8043 /* advert1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0475BB7B1BCE3D43006F8043 /* advert1.png */; };
@@ -90,6 +91,8 @@
 		046737261BD0AB0B002E2665 /* HomeEndCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeEndCell.m; sourceTree = "<group>"; };
 		046737281BD0AB43002E2665 /* KnowledgeCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnowledgeCellView.h; sourceTree = "<group>"; };
 		046737291BD0AB43002E2665 /* KnowledgeCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnowledgeCellView.m; sourceTree = "<group>"; };
+		0467372E1BD0DE82002E2665 /* TapAdvertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapAdvertViewController.h; sourceTree = "<group>"; };
+		0467372F1BD0DE82002E2665 /* TapAdvertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapAdvertViewController.m; sourceTree = "<group>"; };
 		0475BB751BCE3C93006F8043 /* UIImage+UIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIColor.h"; sourceTree = "<group>"; };
 		0475BB761BCE3C93006F8043 /* UIImage+UIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UIColor.m"; sourceTree = "<group>"; };
 		0475BB7A1BCE3D43006F8043 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
@@ -340,6 +343,8 @@
 			children = (
 				04B5C80D1BCBA11800AA5E1A /* HomeViewController.h */,
 				04B5C80E1BCBA11800AA5E1A /* HomeViewController.m */,
+				0467372E1BD0DE82002E2665 /* TapAdvertViewController.h */,
+				0467372F1BD0DE82002E2665 /* TapAdvertViewController.m */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -541,6 +546,7 @@
 				046088EF1BCB876E00A57899 /* AppDelegate.m in Sources */,
 				046088EC1BCB876E00A57899 /* main.m in Sources */,
 				0475BB771BCE3C93006F8043 /* UIImage+UIColor.m in Sources */,
+				046737301BD0DE82002E2665 /* TapAdvertViewController.m in Sources */,
 				046088F51BCB876E00A57899 /* ViewController.m in Sources */,
 				046088F21BCB876E00A57899 /* MenuProject.xcdatamodeld in Sources */,
 				04B5C8121BCBA12400AA5E1A /* LifeViewController.m in Sources */,
