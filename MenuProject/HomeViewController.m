@@ -16,6 +16,8 @@
 
 #import "HomeCategoryCell.h"
 #import "HomeGourmetCell.h"
+#import "HomeKnowledgeCell.h"
+#import "HomeEndCell.h"
 
 const CGFloat LSWHeaderViewHeight = 200;
 
@@ -152,7 +154,9 @@ const CGFloat LSWHeaderViewHeight = 200;
 
 #pragma mark - tableViewDelegate&DataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 150;
+    NSArray *height = @[@150, @100, @135, @180, @80];
+    return [[height objectAtIndex:indexPath.section]floatValue];
+    //return 150;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -168,14 +172,17 @@ const CGFloat LSWHeaderViewHeight = 200;
 {
     
     if (indexPath.section == 0) {
-        static NSString *cellIndentifier = @"menucell";
+        
+        static NSString *cellIndentifier = @"CategoryCell";
         HomeCategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
         if (cell == nil) {
             cell = [[HomeCategoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
+        
     }else if(indexPath.section == 1){
+        
         UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
@@ -190,40 +197,40 @@ const CGFloat LSWHeaderViewHeight = 200;
         [videoBtn setImage:[UIImage imageNamed:@"videoBtn"] forState:UIControlStateNormal];
         cell.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;        
+        return cell;
+        
     }else if (indexPath.section == 2){
-//        HomeGourmetCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-//        if (cell == nil) {
-//            cell = [[HomeGourmetCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-//        }
-//       // cell.backgroundColor = [UIColor redColor];
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        static NSString *cellIndentifier = @"nomorecell";
+        
+        static NSString *cellIndentifier = @"GourmetCell";
         HomeGourmetCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
         if (cell == nil) {
             cell = [[HomeGourmetCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
         }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+        
+    }else if(indexPath.section == 3){
+        
+        static NSString *cellIndentifier = @"knowledgecell";
+        HomeKnowledgeCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
+        if (cell == nil) {
+            cell = [[HomeKnowledgeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
+        }
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
         return cell;
-    }else if(indexPath.section == 3){
-        UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-        }
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
+        
+        
     }else{//推荐
-        UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        static NSString *cellIndentifier = @"endcell";
+        HomeEndCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+            cell = [[HomeEndCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
         }
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
-//    cell.contentView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView

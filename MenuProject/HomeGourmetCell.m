@@ -28,11 +28,6 @@
     return self;
 }
 
-- (void)clickBtn:(UIButton *)sender{
-    NSLog(@"clickBtnTag:%ld",sender.tag);
-}
-
-
 - (void)awakeFromNib {
     // Initialization code
 }
@@ -44,7 +39,22 @@
 }
 
 - (void)drawRect:(CGRect)rect{
+    // Drawing code
+    CGContextRef context = UIGraphicsGetCurrentContext();
+
     
+    //画竖线1
+    CGContextSetRGBStrokeColor(context, 239.0/255.0, 239.0/255.0, 244.0/255.0, 1.0);
+    CGContextMoveToPoint(context, self.frame.size.width/3, 10);
+    CGContextAddLineToPoint(context, self.frame.size.width/3, self.frame.size.height-20);
+    CGContextStrokePath(context);
+    
+    //画竖线2
+    CGContextSetRGBStrokeColor(context, 239.0/255.0, 239.0/255.0, 244.0/255.0, 1.0);
+    CGContextMoveToPoint(context, self.frame.size.width*2/3, 10);
+    CGContextAddLineToPoint(context, self.frame.size.width*2/3, self.frame.size.height-20);
+    CGContextStrokePath(context);
+
 }
 
 @end

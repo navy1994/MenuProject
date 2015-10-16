@@ -27,7 +27,7 @@
         [self addSubview:_tips];
         
         [_imageView mas_makeConstraints:^(MASConstraintMaker *make){
-            make.top.equalTo(self.mas_top).with.offset(5);
+            make.top.equalTo(self.mas_top).with.offset(10);
             make.width.and.height.mas_equalTo(@70);
             make.centerX.mas_equalTo(self.mas_centerX);
         }];
