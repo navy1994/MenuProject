@@ -10,12 +10,12 @@
 #import "NetworkSingleton.h"
 #import "NetworkSingleton.h"
 
-#import "Masonry.h"
 #import <DYMRollingBanner/DYMRollingBannerVC.h>
 #import "UIImage+UIColor.h"
 #import "UISearchView.h"
 
 #import "HomeCategoryCell.h"
+#import "HomeGourmetCell.h"
 
 const CGFloat LSWHeaderViewHeight = 200;
 
@@ -27,6 +27,7 @@ const CGFloat LSWHeaderViewHeight = 200;
     MASConstraint *_headerViewHeightConstraint;//高的约束
     
     UISearchView *_searchView;
+    UIButton *_videoBtn;
     
     UIActivityIndicatorView *_activityView;
 }
@@ -73,7 +74,7 @@ const CGFloat LSWHeaderViewHeight = 200;
     _tableView = [[UITableView alloc]initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
     [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     _tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    _tableView.sectionHeaderHeight = 5;
+    _tableView.sectionHeaderHeight = 0;
     _tableView.separatorStyle = NO;
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -88,7 +89,7 @@ const CGFloat LSWHeaderViewHeight = 200;
         _headerViewLeftConstraint = make.left.equalTo(@0);
         _headerViewWidthConstraint = make.width.equalTo(@(_tableView.frame.size.width));
         _headerViewTopConstraint = make.top.equalTo(@(-LSWHeaderViewHeight));
-        _headerViewHeightConstraint = make.height.equalTo(@(LSWHeaderViewHeight));
+        _headerViewHeightConstraint = make.height.equalTo(@(LSWHeaderViewHeight+20));
     }];
     
     [_rollingBannerVC didMoveToParentViewController:self];
@@ -107,7 +108,8 @@ const CGFloat LSWHeaderViewHeight = 200;
     
     [_rollingBannerVC startRolling];
     
-    self.adverSearchView = [[UISearchView alloc]initWithFrame:CGRectMake(10, -60, screen_width-20, 30)];
+    self.adverSearchView = [[UISearchView alloc]initWithFrame:CGRectMake(10, -40, screen_width-20, 30)];
+    _adverSearchView.alpha = 0.8;
     [_tableView addSubview:_adverSearchView];
     
     //自定义标题
@@ -178,41 +180,32 @@ const CGFloat LSWHeaderViewHeight = 200;
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         }
+        UIButton *videoBtn = [UIButton new];
+        [cell.contentView addSubview:videoBtn];
+        [videoBtn mas_makeConstraints:^(MASConstraintMaker *make){
+            make.top.and.bottom.equalTo(cell.contentView).with.offset(0);
+            make.left.equalTo(cell.contentView).with.offset(10);
+            make.right.equalTo(cell.contentView).with.offset(-10);
+        }];
+        [videoBtn setImage:[UIImage imageNamed:@"videoBtn"] forState:UIControlStateNormal];
+        cell.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
-
-//        if (_rushArray.count == 0) {
-//            static NSString *cellIndentifier = @"nomorecell";
-//            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
-//            if (cell == nil) {
-//                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
-//            }
-//            
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//            
-//            return cell;
-//        }else{
-//            static NSString *cellIndentifier = @"rushcell";
-//            RushCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
-//            if (cell == nil) {
-//                cell = [[RushCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
-//            }
-//            
-//            if (_rushArray.count!=0) {
-//                [cell setRushData:_rushArray];
-//            }
-//            cell.delegate = self;
-//            
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//            return cell;
-//        }
-        
+        return cell;        
     }else if (indexPath.section == 2){
-        UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+//        HomeGourmetCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+//        if (cell == nil) {
+//            cell = [[HomeGourmetCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+//        }
+//       // cell.backgroundColor = [UIColor redColor];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        static NSString *cellIndentifier = @"nomorecell";
+        HomeGourmetCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+            cell = [[HomeGourmetCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
         }
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
         return cell;
     }else if(indexPath.section == 3){
         UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
@@ -241,7 +234,7 @@ const CGFloat LSWHeaderViewHeight = 200;
         _headerViewTopConstraint.offset = yOffset;
         _headerViewLeftConstraint.offset = xOffset;
         _headerViewWidthConstraint.offset = _tableView.frame.size.width + fabs(xOffset) * 2;
-        _headerViewHeightConstraint.offset = -yOffset;
+        _headerViewHeightConstraint.offset = -yOffset+20;
     }
         CGFloat alpha = (yOffset + LSWHeaderViewHeight)/LSWHeaderViewHeight;
         [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[RGB(260.0, 260.0, 248.0) colorWithAlphaComponent:alpha]] forBarMetrics:UIBarMetricsDefault];
