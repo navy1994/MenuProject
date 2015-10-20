@@ -51,6 +51,7 @@
 		046D6DD01BD61C630066A25A /* third_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 046D6DB61BD61C630066A25A /* third_normal@2x.png */; };
 		046D6DD11BD61C630066A25A /* third_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 046D6DB71BD61C630066A25A /* third_selected.png */; };
 		046D6DD21BD61C630066A25A /* third_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 046D6DB81BD61C630066A25A /* third_selected@2x.png */; };
+		046D6DDB1BD627850066A25A /* AdvertTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D6DDA1BD627850066A25A /* AdvertTableViewCell.m */; };
 		0475BB771BCE3C93006F8043 /* UIImage+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0475BB761BCE3C93006F8043 /* UIImage+UIColor.m */; };
 		0475BB7F1BCE3D43006F8043 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 0475BB7A1BCE3D43006F8043 /* 0.png */; };
 		0475BB801BCE3D43006F8043 /* advert1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0475BB7B1BCE3D43006F8043 /* advert1.png */; };
@@ -135,6 +136,8 @@
 		046D6DB61BD61C630066A25A /* third_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "third_normal@2x.png"; sourceTree = "<group>"; };
 		046D6DB71BD61C630066A25A /* third_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = third_selected.png; sourceTree = "<group>"; };
 		046D6DB81BD61C630066A25A /* third_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "third_selected@2x.png"; sourceTree = "<group>"; };
+		046D6DD91BD627850066A25A /* AdvertTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertTableViewCell.h; sourceTree = "<group>"; };
+		046D6DDA1BD627850066A25A /* AdvertTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvertTableViewCell.m; sourceTree = "<group>"; };
 		0475BB751BCE3C93006F8043 /* UIImage+UIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIColor.h"; sourceTree = "<group>"; };
 		0475BB761BCE3C93006F8043 /* UIImage+UIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UIColor.m"; sourceTree = "<group>"; };
 		0475BB7A1BCE3D43006F8043 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
@@ -262,6 +265,7 @@
 		04615AF31BCF987900EF596F /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				046D6DD81BD6274B0066A25A /* HomeAdvertCell */,
 				04615AF41BCF988900EF596F /* HomeTableCell */,
 				046737191BD0A0AA002E2665 /* GourmetCellView.h */,
 				0467371A1BD0A0AA002E2665 /* GourmetCellView.m */,
@@ -332,6 +336,15 @@
 				046D6DB81BD61C630066A25A /* third_selected@2x.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		046D6DD81BD6274B0066A25A /* HomeAdvertCell */ = {
+			isa = PBXGroup;
+			children = (
+				046D6DD91BD627850066A25A /* AdvertTableViewCell.h */,
+				046D6DDA1BD627850066A25A /* AdvertTableViewCell.m */,
+			);
+			name = HomeAdvertCell;
 			sourceTree = "<group>";
 		};
 		0475BB781BCE3C98006F8043 /* depends */ = {
@@ -639,6 +652,7 @@
 				046088EC1BCB876E00A57899 /* main.m in Sources */,
 				0475BB771BCE3C93006F8043 /* UIImage+UIColor.m in Sources */,
 				046737301BD0DE82002E2665 /* TapAdvertViewController.m in Sources */,
+				046D6DDB1BD627850066A25A /* AdvertTableViewCell.m in Sources */,
 				046088F51BCB876E00A57899 /* ViewController.m in Sources */,
 				046088F21BCB876E00A57899 /* MenuProject.xcdatamodeld in Sources */,
 				04B5C8121BCBA12400AA5E1A /* LifeViewController.m in Sources */,

@@ -11,8 +11,10 @@
 #import "RDVTabBarController.h"
 #import "Masonry.h"
 
+#import "AdvertTableViewCell.h"
 
-@interface TapAdvertViewController ()<UIScrollViewDelegate>
+
+@interface TapAdvertViewController ()<UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) HMSegmentedControl *segmentedControl;
 
@@ -49,11 +51,12 @@
         make.left.and.right.equalTo(self.view).with.offset(0);
         make.height.mas_equalTo(@40);
     }];
+
     self.segmentedControl.sectionTitles = @[@"早餐", @"中餐", @"晚餐"];
     self.segmentedControl.selectedSegmentIndex = 1;
     self.segmentedControl.backgroundColor = RGB(245, 245, 245);
-    self.segmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor grayColor]};
-    self.segmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName : RGB(240, 70, 73)};
+    self.segmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor grayColor], NSFontAttributeName:[UIFont fontWithName:@"Arial-ItalicMT" size:15.0]};
+    self.segmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName : RGB(240, 70, 73), NSFontAttributeName:[UIFont fontWithName:@"Arial-ItalicMT" size:16.0]};
     self.segmentedControl.selectionIndicatorColor = RGB(240, 70, 73);
     self.segmentedControl.selectionIndicatorHeight = 2.0f;
     self.segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe;
@@ -75,26 +78,34 @@
         make.top.equalTo(self.segmentedControl.mas_bottom).with.offset(0);
         make.left.and.right.and.bottom.equalTo(self.view).with.offset(0);
     }];
-    self.scrollView.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1];
+    self.scrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.scrollView.pagingEnabled = YES;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.contentSize = CGSizeMake(screen_width * 3, 200);
     self.scrollView.delegate = self;
     [self.scrollView scrollRectToVisible:CGRectMake(screen_width, 0, screen_width, 200) animated:NO];
     
-    self.tableView1 = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, screen_width, _scrollView.frame.size.height)];
+    self.tableView1 = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, screen_width, screen_height)];
+    _tableView1.dataSource = self;
+    _tableView1.delegate = self;
+    _tableView1.separatorStyle = NO;
     [self.scrollView addSubview:_tableView1];
     
-    self.tableView2 = [[UITableView alloc]initWithFrame:CGRectMake(screen_width, 0, screen_width, _scrollView.frame.size.height)];
+    self.tableView2 = [[UITableView alloc]initWithFrame:CGRectMake(screen_width, 0, screen_width, screen_height)];
+    _tableView2.dataSource = self;
+    _tableView2.delegate = self;
+    _tableView2.separatorStyle = NO;
     [self.scrollView addSubview:_tableView2];
     
-    self.tableView3 = [[UITableView alloc]initWithFrame:CGRectMake(screen_width * 2, 0, screen_width, _scrollView.frame.size.height)];
+    self.tableView3 = [[UITableView alloc]initWithFrame:CGRectMake(screen_width * 2, 0, screen_width, screen_height)];
+    _tableView3.dataSource = self;
+    _tableView3.delegate = self;
+    _tableView3.separatorStyle = NO;
     [self.scrollView addSubview:_tableView3];
     
 }
 
 #pragma mark - UIScrollViewDelegate
-
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     CGFloat pageWidth = scrollView.frame.size.width;
     NSInteger page = scrollView.contentOffset.x / pageWidth;
@@ -107,6 +118,39 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark --- UITableViewDataSource
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 200;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (tableView == self.tableView1) {
+        return 10;
+    }else if (tableView == self.tableView2){
+        return 12;
+    }else{
+        return 8;
+    }
+}
+
+- (AdvertTableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+     static NSString *CellIndetifier = @"cell";
+     AdvertTableViewCell *cell = (AdvertTableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIndetifier];
+    
+     if (!cell) {
+        cell = [[AdvertTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIndetifier];
+         
+     }
+    
+            return cell;
+    
+}
+
 
 /*
 #pragma mark - Navigation
