@@ -13,6 +13,9 @@
 #import "MineViewController.h"
 #import "NetworkSingleton.h"
 
+#import "RDVTabBarController.h"
+#import "RDVTabBarItem.h"
+
 @interface AppDelegate ()
 
 @end
@@ -23,7 +26,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
     [self initRootVC];
+    [self.window setRootViewController:self.viewController];
+    [self.window makeKeyAndVisible];
+    
+    [self customizeInterface];
     return YES;
 }
 
@@ -52,16 +61,17 @@
 }
 
 - (void)initRootVC{
-    //此处一定要给window一个frame，添加广告image时这个必须要
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    HomeViewController *homeViewController = [[HomeViewController alloc] init];
+     [[UINavigationBar appearance] setTintColor:RGB(240, 70, 73)];
+    
+    //此处一定要给window一个frame，添加广告image时这个必须要
+    UIViewController *homeViewController = [[HomeViewController alloc] init];
     UINavigationController *homeNavigation = [[UINavigationController alloc] initWithRootViewController:homeViewController];
-    LifeViewController *lifeViewController = [[LifeViewController alloc] init];
+    UIViewController *lifeViewController = [[LifeViewController alloc] init];
     UINavigationController *lifeNavigation = [[UINavigationController alloc] initWithRootViewController:lifeViewController];
-    SurpriseViewController *surpriseViewController = [[SurpriseViewController alloc] init];
+    UIViewController *surpriseViewController = [[SurpriseViewController alloc] init];
     UINavigationController *surpriseNavigation = [[UINavigationController alloc] initWithRootViewController:surpriseViewController];
-    MineViewController *mineViewController = [[MineViewController alloc] init];
+    UIViewController *mineViewController = [[MineViewController alloc] init];
     UINavigationController *mineNavigation = [[UINavigationController alloc] initWithRootViewController:mineViewController];
     
     homeViewController.title = @"学做菜";
@@ -71,26 +81,23 @@
     
     NSArray *viewControllers = @[homeNavigation, lifeNavigation, surpriseNavigation, mineNavigation];
     
-    self.rootTabbarCtr = [[UITabBarController alloc] init];
-    [self.rootTabbarCtr setViewControllers:viewControllers];
-    self.window.rootViewController = self.rootTabbarCtr;
+    RDVTabBarController *tabBarController = [[RDVTabBarController alloc] init];
+    [tabBarController setViewControllers:viewControllers];
+    self.viewController = tabBarController;
     
-//    UITabBar *tabbar = self.rootTabbarCtr.tabBar;
-//    UITabBarItem *homeItem = [tabbar.items objectAtIndex:0];
-//    UITabBarItem *lifeItem = [tabbar.items objectAtIndex:1];
-//    UITabBarItem *surpriseItem = [tabbar.items objectAtIndex:2];
-//    UITabBarItem *mineItem = [tabbar.items objectAtIndex:3];
+    [self customizeTabBarForController:tabBarController];
+    
     
     //改变UITabBarItem字体颜色
     
-    UIFont* font = [UIFont fontWithName:@"Arial-ItalicMT" size:20.0];
-    NSDictionary* textAttributes = @{NSFontAttributeName:font,
-                                     NSForegroundColorAttributeName:RGB(243, 70, 73)};
+//    UIFont* font = [UIFont fontWithName:@"Arial-ItalicMT" size:20.0];
+//    NSDictionary* textAttributes = @{NSFontAttributeName:font,
+//                                     NSForegroundColorAttributeName:RGB(243, 70, 73)};
+//    
+//    [[UITabBarItem appearance] setTitleTextAttributes:textAttributes forState:UIControlStateSelected];
+//    
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    [[UITabBarItem appearance] setTitleTextAttributes:textAttributes forState:UIControlStateSelected];
-    
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [self.window makeKeyAndVisible];
     
 //    NSString *dayStr = @"早餐";
 //    NSString *urlStr = [NSString stringWithFormat:@"http://apis.juhe.cn/cook/query?key=%s&menu=%@&rn=10&pn=3",appkey,dayStr];
@@ -108,6 +115,64 @@
 
     
 }
+
+- (void)customizeTabBarForController:(RDVTabBarController *)tabBarController {
+    UIImage *finishedImage = [UIImage imageNamed:@"tabbar_selected_background"];
+    UIImage *unfinishedImage = [UIImage imageNamed:@"tabbar_normal_background"];
+    
+    NSArray *tabBarItemImages = @[@"second", @"first", @"third", @"first"];
+    
+    
+    NSInteger index = 0;
+    for (RDVTabBarItem *item in [[tabBarController tabBar] items]) {
+        [item setBackgroundSelectedImage:finishedImage withUnselectedImage:unfinishedImage];
+        
+        UIImage *selectedimage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",
+                                                      [tabBarItemImages objectAtIndex:index]]];
+        UIImage *unselectedimage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_normal",
+                                                     [tabBarItemImages objectAtIndex:index]]];
+        UIFont* font = [UIFont fontWithName:@"Arial-ItalicMT" size:15.0];
+        NSDictionary* textAttributes = @{NSFontAttributeName:font,
+                                            NSForegroundColorAttributeName:RGB(243, 70, 73)};
+        item.selectedTitleAttributes = textAttributes;
+        
+        [item setFinishedSelectedImage:selectedimage withFinishedUnselectedImage:unselectedimage];
+        
+        index++;
+    }
+}
+
+- (void)customizeInterface {
+    UINavigationBar *navigationBarAppearance = [UINavigationBar appearance];
+    
+    UIImage *backgroundImage = nil;
+    NSDictionary *textAttributes = nil;
+    
+    if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
+        backgroundImage = [UIImage imageNamed:@"navigationbar_background_tall"];
+        
+        textAttributes = @{
+                           NSFontAttributeName: [UIFont boldSystemFontOfSize:18],
+                           NSForegroundColorAttributeName: [UIColor blackColor],
+                           };
+    } else {
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+        backgroundImage = [UIImage imageNamed:@"navigationbar_background"];
+        
+        textAttributes = @{
+                           UITextAttributeFont: [UIFont boldSystemFontOfSize:18],
+                           UITextAttributeTextColor: [UIColor blackColor],
+                           UITextAttributeTextShadowColor: [UIColor clearColor],
+                           UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetZero],
+                           };
+#endif
+    }
+    
+    [navigationBarAppearance setBackgroundImage:backgroundImage
+                                  forBarMetrics:UIBarMetricsDefault];
+    [navigationBarAppearance setTitleTextAttributes:textAttributes];
+}
+
 
 #pragma mark - Core Data stack
 

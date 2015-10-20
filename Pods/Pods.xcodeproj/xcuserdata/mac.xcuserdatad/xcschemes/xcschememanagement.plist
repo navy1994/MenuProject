@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>HMSegmentedControl.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -44,6 +49,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>RDVTabBarController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -54,35 +64,15 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>YAScrollSegmentControl-YAScrollSegmentControl.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>YAScrollSegmentControl.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0D86D20580E0052223DA005504872E20</key>
+		<key>1787F783FA6AD5654D2FEA2BBF7A2EF4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2006DD8439315CE4123A2EE61D136F0C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4D1F6AF3DD1CA6D5E7A920849FB4090A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>533956348074A4E8DB24849E27F8BAF6</key>
+		<key>509F102851AE4E2D8FCC72DEA98F8E61</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,7 +82,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>77607295FC01443E49294897F092AF0C</key>
+		<key>62A9FCC876611D9FA28030586D9FFBFB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6853DB04539032E7A32938C5D455377A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>91F534050E357D98B6A583E266A38A02</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AE5A1F69094B4701F96EA3A7AAAE04E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -102,27 +107,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B8B8D5E2DC5594128783FE77C4341C45</key>
+		<key>B30A4D46621D3974A2586F8C984C6C58</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BFE45EB528539C2A61739EEAF2F06A0A</key>
+		<key>B9521849D401099F5E51A9DD485A652F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CC4BD1F45F1B72B34F02D44DBDA10D7C</key>
+		<key>C3EC2C859D3839D439028715F0088A55</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CD23CD7602B770284CC9802C39DDB215</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F2EC1142D71534F58944B43EAD3360B1</key>
+		<key>F90D2FAF5BD0069FEB466BDD310B8FC5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

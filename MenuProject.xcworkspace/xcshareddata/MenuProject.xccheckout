@@ -26,7 +26,7 @@
 		<key>CCE3D103D8CEFF25A468F8D162A011C9CF84E92A</key>
 		<string>..</string>
 		<key>E0647A72A0C1C9D78EA44BB29D90BA7E6B16FC32</key>
-		<string>../MenuProject/LjjUISegmentedControl/</string>
+		<string>../MenuProject/LjjUISegmentedControl</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:navy1994/MenuProject.git</string>

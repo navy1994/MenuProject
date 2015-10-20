@@ -76,7 +76,9 @@ const CGFloat LSWHeaderViewHeight = 200;
     self.automaticallyAdjustsScrollViewInsets=NO;
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
     
-    _tableView = [[UITableView alloc]initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc]initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
+    _tableView.showsVerticalScrollIndicator =
+    NO;
     [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     _tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     _tableView.sectionHeaderHeight = 0;
