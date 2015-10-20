@@ -52,6 +52,7 @@
 		046D6DD11BD61C630066A25A /* third_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 046D6DB71BD61C630066A25A /* third_selected.png */; };
 		046D6DD21BD61C630066A25A /* third_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 046D6DB81BD61C630066A25A /* third_selected@2x.png */; };
 		046D6DDB1BD627850066A25A /* AdvertTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D6DDA1BD627850066A25A /* AdvertTableViewCell.m */; };
+		046D6DDE1BD632D00066A25A /* TapSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D6DDD1BD632D00066A25A /* TapSearchViewController.m */; };
 		0475BB771BCE3C93006F8043 /* UIImage+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0475BB761BCE3C93006F8043 /* UIImage+UIColor.m */; };
 		0475BB7F1BCE3D43006F8043 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 0475BB7A1BCE3D43006F8043 /* 0.png */; };
 		0475BB801BCE3D43006F8043 /* advert1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0475BB7B1BCE3D43006F8043 /* advert1.png */; };
@@ -138,6 +139,8 @@
 		046D6DB81BD61C630066A25A /* third_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "third_selected@2x.png"; sourceTree = "<group>"; };
 		046D6DD91BD627850066A25A /* AdvertTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertTableViewCell.h; sourceTree = "<group>"; };
 		046D6DDA1BD627850066A25A /* AdvertTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvertTableViewCell.m; sourceTree = "<group>"; };
+		046D6DDC1BD632D00066A25A /* TapSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapSearchViewController.h; sourceTree = "<group>"; };
+		046D6DDD1BD632D00066A25A /* TapSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapSearchViewController.m; sourceTree = "<group>"; };
 		0475BB751BCE3C93006F8043 /* UIImage+UIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIColor.h"; sourceTree = "<group>"; };
 		0475BB761BCE3C93006F8043 /* UIImage+UIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UIColor.m"; sourceTree = "<group>"; };
 		0475BB7A1BCE3D43006F8043 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
@@ -429,6 +432,8 @@
 				04B5C80E1BCBA11800AA5E1A /* HomeViewController.m */,
 				0467372E1BD0DE82002E2665 /* TapAdvertViewController.h */,
 				0467372F1BD0DE82002E2665 /* TapAdvertViewController.m */,
+				046D6DDC1BD632D00066A25A /* TapSearchViewController.h */,
+				046D6DDD1BD632D00066A25A /* TapSearchViewController.m */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -663,6 +668,7 @@
 				04615AE51BCF80CA00EF596F /* UISearchView.m in Sources */,
 				04B5C80F1BCBA11800AA5E1A /* HomeViewController.m in Sources */,
 				04B5C8151BCBA13800AA5E1A /* SurpriseViewController.m in Sources */,
+				046D6DDE1BD632D00066A25A /* TapSearchViewController.m in Sources */,
 				04B5C8181BCBA14700AA5E1A /* MineViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

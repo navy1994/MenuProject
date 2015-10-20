@@ -40,7 +40,7 @@
     
     
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.title = @"今日推荐";
     // Tying up the segmented control to a scroll view
     //self.segmentedControl = [[HMSegmentedControl alloc] initWithFrame:CGRectMake(0, 64, screen_width, 40)];

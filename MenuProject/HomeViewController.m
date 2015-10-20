@@ -6,6 +6,7 @@
 //  Copyright (c) 2015年 上海科文麦格里实业有限公司. All rights reserved.
 //
 #import "TapAdvertViewController.h"
+#import "TapSearchViewController.h"
 
 #import "HomeViewController.h"
 #import "NetworkSingleton.h"
@@ -60,6 +61,8 @@ const CGFloat LSWHeaderViewHeight = 200;
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     NSLog(@"viewDidapper");
+//    //重新加载
+//    [self setupUI];
 }
 
 - (void)viewDidLoad {
@@ -120,12 +123,29 @@ const CGFloat LSWHeaderViewHeight = 200;
     
     self.adverSearchView = [[UISearchView alloc]initWithFrame:CGRectMake(10, -40, screen_width-20, 30)];
     _adverSearchView.alpha = 0.8;
+    _adverSearchView.userInteractionEnabled = YES;
     [_tableView addSubview:_adverSearchView];
     
     //自定义标题
     _searchView = [[UISearchView alloc]initWithFrame:CGRectMake(10, 0, screen_width-20, 30)];
     self.navigationItem.titleView = _searchView;
+    _searchView.userInteractionEnabled = YES;
     _searchView.alpha = 0;
+    
+    UITapGestureRecognizer*tapRecognizer1=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickurl1:)];
+    UITapGestureRecognizer*tapRecognizer2=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickurl1:)];
+    
+    [_adverSearchView addGestureRecognizer:tapRecognizer1];
+    [_searchView addGestureRecognizer:tapRecognizer2];
+    
+}
+
+-(void)clickurl1:(id)sender
+
+{
+    TapSearchViewController *searchViewController = [[TapSearchViewController alloc]init];
+    searchViewController.searchView = _searchView;
+    [self.navigationController pushViewController:searchViewController animated:NO];
     
 }
 
