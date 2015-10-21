@@ -10,6 +10,5 @@
 
 @interface TapSearchViewController : UIViewController
 
-@property (nonatomic, strong) UIView *searchView;
 
 @end

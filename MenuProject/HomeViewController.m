@@ -14,7 +14,6 @@
 
 #import <DYMRollingBanner/DYMRollingBannerVC.h>
 #import "UIImage+UIColor.h"
-#import "UISearchView.h"
 
 #import "HomeCategoryCell.h"
 #import "HomeGourmetCell.h"
@@ -30,7 +29,6 @@ const CGFloat LSWHeaderViewHeight = 200;
     MASConstraint *_headerViewTopConstraint;//上边的约束
     MASConstraint *_headerViewHeightConstraint;//高的约束
     
-    UISearchView *_searchView;
     UIButton *_videoBtn;
     
     UIActivityIndicatorView *_activityView;
@@ -144,7 +142,7 @@ const CGFloat LSWHeaderViewHeight = 200;
 
 {
     TapSearchViewController *searchViewController = [[TapSearchViewController alloc]init];
-    searchViewController.searchView = _searchView;
+    self.navigationController.navigationBar.alpha = 1;
     [self.navigationController pushViewController:searchViewController animated:NO];
     
 }
@@ -272,6 +270,7 @@ const CGFloat LSWHeaderViewHeight = 200;
         CGFloat alpha = (yOffset + LSWHeaderViewHeight)/LSWHeaderViewHeight;
         [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[RGB(260.0, 260.0, 248.0) colorWithAlphaComponent:alpha]] forBarMetrics:UIBarMetricsDefault];
          _searchView.alpha = alpha;
+    self.navigationController.navigationBar.alpha = alpha;
 //        alpha = fabs(alpha);
 //        alpha = fabs(1 - alpha);
 //        alpha = alpha < 0.5 ? 0.5 : alpha;

@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UISearchView.h"
 
 @interface HomeViewController : UIViewController
 
 @property (nonatomic, strong) NSMutableArray *advertArray;
+@property (nonatomic, strong) UISearchView *searchView;
 @end

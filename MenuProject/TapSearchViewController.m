@@ -16,7 +16,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    self.searchView.alpha = 0;
+    self.navigationController.navigationBar.alpha = 0;
 }
 
 - (void)viewDidLoad {
