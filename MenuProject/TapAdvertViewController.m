@@ -10,6 +10,7 @@
 #import "HMSegmentedControl.h"
 #import "RDVTabBarController.h"
 #import "Masonry.h"
+#import "UIImage+UIColor.h"
 
 #import "AdvertTableViewCell.h"
 
@@ -29,27 +30,36 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
+    /**
+     *  设置导航栏
+     */
+    self.title = @"今日推荐";
+    self.navigationController.navigationBar.alpha = 1;
 }
+
 
 - (void)viewWillDisappear:(BOOL)animated {
     [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
     self.navigationController.navigationBar.alpha = 0;
     [super viewWillDisappear:animated];
 }
+- (void)viewWillLayoutSubviews{
+    
+}
 
 - (void)viewDidLoad {
-    NSLog(@"Advert:%f",self.navigationController.navigationBar.alpha);
-    
     [super viewDidLoad];
-    self.navigationController.navigationBar.alpha = 1;
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[RGB(260.0, 260.0, 248.0) colorWithAlphaComponent:1]] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+    /**
+     *  界面设计
+     */
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    self.title = @"今日推荐";
-    // Tying up the segmented control to a scroll view
-    //self.segmentedControl = [[HMSegmentedControl alloc] initWithFrame:CGRectMake(0, 64, screen_width, 40)];
     self.segmentedControl = [[HMSegmentedControl alloc] init];
     [self.view addSubview:self.segmentedControl];
     [_segmentedControl mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(self.view).with.offset(64);
+        make.top.equalTo(self.view).with.offset(0);
         make.left.and.right.equalTo(self.view).with.offset(0);
         make.height.mas_equalTo(@40);
     }];

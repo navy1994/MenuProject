@@ -51,12 +51,12 @@ const CGFloat LSWHeaderViewHeight = 200;
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    NSLog(@"viewWillApper");
+    
+    [self.tableView setContentOffset:CGPointMake(0,-LSWHeaderViewHeight) animated:NO];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    NSLog(@"viewDidapper");
 }
 
 - (void)viewDidLoad {
@@ -64,15 +64,14 @@ const CGFloat LSWHeaderViewHeight = 200;
     [self setupUI];
     //[self getAdvertImageData];
     
-    NSLog(@"viewDidLoad %f",self.navigationController.navigationBar.alpha);
     
 }
 
 - (void)setupUI{
+    NSLog(@"first:%f",self.navigationController.navigationBar.alpha);
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[[UIColor clearColor] colorWithAlphaComponent:0]] forBarMetrics:UIBarMetricsDefault];
     self.automaticallyAdjustsScrollViewInsets=NO;
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-    
     self.tableView = [[UITableView alloc]initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
     _tableView.showsVerticalScrollIndicator =
     NO;
@@ -86,6 +85,7 @@ const CGFloat LSWHeaderViewHeight = 200;
     [self.view addSubview:_tableView];
     
     _rollingBannerVC = [DYMRollingBannerVC new];
+    NSLog(@"two:%f",self.navigationController.navigationBar.alpha);
     [self addChildViewController:_rollingBannerVC];
     [_tableView addSubview:_rollingBannerVC.view];
     
@@ -107,12 +107,11 @@ const CGFloat LSWHeaderViewHeight = 200;
                                        ];
     
     [_rollingBannerVC addBannerTapHandler:^(NSInteger whichIndex) {
-        NSLog(@"banner tapped, index = %@", @(whichIndex));
         TapAdvertViewController *tapViewController = [[TapAdvertViewController alloc]init];
-        [self.navigationController pushViewController:tapViewController animated:NO];
+        self.navigationItem.titleView = nil;
+        [self.navigationController pushViewController:tapViewController animated:YES];
         
     }];
-    
     [_rollingBannerVC startRolling];
     
     self.adverSearchView = [[UISearchView alloc]initWithFrame:CGRectMake(10, -40, screen_width-20, 30)];
@@ -122,15 +121,16 @@ const CGFloat LSWHeaderViewHeight = 200;
     
     //自定义标题
     _searchView = [[UISearchView alloc]initWithFrame:CGRectMake(10, 0, screen_width-20, 30)];
+    _searchView.alpha = 0;
     self.navigationItem.titleView = _searchView;
     _searchView.userInteractionEnabled = YES;
-    _searchView.alpha = 0;
     
     UITapGestureRecognizer*tapRecognizer1=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickurl1:)];
     UITapGestureRecognizer*tapRecognizer2=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickurl1:)];
     
     [_adverSearchView addGestureRecognizer:tapRecognizer1];
     [_searchView addGestureRecognizer:tapRecognizer2];
+    NSLog(@"three:%f",self.navigationController.navigationBar.alpha);
     
 }
 
@@ -138,7 +138,8 @@ const CGFloat LSWHeaderViewHeight = 200;
 
 {
     TapSearchViewController *searchViewController = [[TapSearchViewController alloc]init];
-    [self.navigationController pushViewController:searchViewController animated:NO];
+    self.navigationItem.titleView = nil;
+    [self.navigationController pushViewController:searchViewController animated:YES];
     
 }
 
