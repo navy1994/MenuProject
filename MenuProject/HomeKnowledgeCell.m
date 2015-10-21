@@ -38,7 +38,6 @@
             knowview.tag = (i+1)*100;
             knowview.imageView.image = [UIImage imageNamed:[imageArray objectAtIndex:i]];
             knowview.titleLB.text = [titleArray objectAtIndex:i];
-            NSLog(@"%@",[titleArray objectAtIndex:i]);
             [self.contentView addSubview:knowview];
         }
         
