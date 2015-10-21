@@ -10,18 +10,13 @@
 #import "UIImage+UIColor.h"
 #import "HMSegmentedControl.h"
 #import "RDVTabBarController.h"
-<<<<<<< HEAD
+
 
 @interface TapSearchViewController ()<UITextFieldDelegate>
 @property (nonatomic, strong) UITextField *textField;
 
-
-=======
-
-@interface TapSearchViewController ()<UITextFieldDelegate>
-@property (nonatomic, strong) UITextField *textField;
->>>>>>> 2b0e636d8a5b7e07e446a860fb11ea46dc187af0
 @end
+
 
 @implementation TapSearchViewController
 

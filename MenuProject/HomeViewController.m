@@ -51,12 +51,8 @@ const CGFloat LSWHeaderViewHeight = 200;
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-<<<<<<< HEAD
     NSLog(@"viewWillApper");
     [self.navigationItem.titleView setHidden:NO];
-=======
-    
->>>>>>> 2b0e636d8a5b7e07e446a860fb11ea46dc187af0
     [self.tableView setContentOffset:CGPointMake(0,-LSWHeaderViewHeight) animated:NO];
 }
 
@@ -113,11 +109,8 @@ const CGFloat LSWHeaderViewHeight = 200;
     
     [_rollingBannerVC addBannerTapHandler:^(NSInteger whichIndex) {
         TapAdvertViewController *tapViewController = [[TapAdvertViewController alloc]init];
-<<<<<<< HEAD
+
         [self.navigationItem.titleView setHidden:YES];
-=======
-        self.navigationItem.titleView = nil;
->>>>>>> 2b0e636d8a5b7e07e446a860fb11ea46dc187af0
         [self.navigationController pushViewController:tapViewController animated:YES];
         
     }];
@@ -130,9 +123,10 @@ const CGFloat LSWHeaderViewHeight = 200;
     
     //自定义标题
     _searchView = [[UISearchView alloc]initWithFrame:CGRectMake(10, 0, screen_width-20, 30)];
-    _searchView.alpha = 0;
     self.navigationItem.titleView = _searchView;
+     _searchView.alpha = 0;
     _searchView.userInteractionEnabled = YES;
+    
     
     UITapGestureRecognizer*tapRecognizer1=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickurl1:)];
     UITapGestureRecognizer*tapRecognizer2=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickurl1:)];
@@ -147,11 +141,8 @@ const CGFloat LSWHeaderViewHeight = 200;
 
 {
     TapSearchViewController *searchViewController = [[TapSearchViewController alloc]init];
-<<<<<<< HEAD
+
     [self.navigationItem.titleView setHidden:YES];
-=======
-    self.navigationItem.titleView = nil;
->>>>>>> 2b0e636d8a5b7e07e446a860fb11ea46dc187af0
     [self.navigationController pushViewController:searchViewController animated:YES];
     
 }
