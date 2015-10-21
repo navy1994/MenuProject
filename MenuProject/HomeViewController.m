@@ -52,6 +52,8 @@ const CGFloat LSWHeaderViewHeight = 200;
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     NSLog(@"viewWillApper");
+    [self.navigationItem.titleView setHidden:NO];
+    [self.tableView setContentOffset:CGPointMake(0,-LSWHeaderViewHeight) animated:NO];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -109,7 +111,8 @@ const CGFloat LSWHeaderViewHeight = 200;
     [_rollingBannerVC addBannerTapHandler:^(NSInteger whichIndex) {
         NSLog(@"banner tapped, index = %@", @(whichIndex));
         TapAdvertViewController *tapViewController = [[TapAdvertViewController alloc]init];
-        [self.navigationController pushViewController:tapViewController animated:NO];
+        [self.navigationItem.titleView setHidden:YES];
+        [self.navigationController pushViewController:tapViewController animated:YES];
         
     }];
     
@@ -138,7 +141,8 @@ const CGFloat LSWHeaderViewHeight = 200;
 
 {
     TapSearchViewController *searchViewController = [[TapSearchViewController alloc]init];
-    [self.navigationController pushViewController:searchViewController animated:NO];
+    [self.navigationItem.titleView setHidden:YES];
+    [self.navigationController pushViewController:searchViewController animated:YES];
     
 }
 
