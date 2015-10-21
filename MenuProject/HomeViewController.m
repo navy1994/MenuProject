@@ -51,7 +51,6 @@ const CGFloat LSWHeaderViewHeight = 200;
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    NSLog(@"viewWillApper");
     [self.navigationItem.titleView setHidden:NO];
     [self.tableView setContentOffset:CGPointMake(0,-LSWHeaderViewHeight) animated:NO];
 }
@@ -69,7 +68,6 @@ const CGFloat LSWHeaderViewHeight = 200;
 }
 
 - (void)setupUI{
-    NSLog(@"first:%f",self.navigationController.navigationBar.alpha);
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[[UIColor clearColor] colorWithAlphaComponent:0]] forBarMetrics:UIBarMetricsDefault];
     self.automaticallyAdjustsScrollViewInsets=NO;
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
@@ -86,7 +84,6 @@ const CGFloat LSWHeaderViewHeight = 200;
     [self.view addSubview:_tableView];
     
     _rollingBannerVC = [DYMRollingBannerVC new];
-    NSLog(@"two:%f",self.navigationController.navigationBar.alpha);
     [self addChildViewController:_rollingBannerVC];
     [_tableView addSubview:_rollingBannerVC.view];
     
@@ -133,7 +130,6 @@ const CGFloat LSWHeaderViewHeight = 200;
     
     [_adverSearchView addGestureRecognizer:tapRecognizer1];
     [_searchView addGestureRecognizer:tapRecognizer2];
-    NSLog(@"three:%f",self.navigationController.navigationBar.alpha);
     
 }
 

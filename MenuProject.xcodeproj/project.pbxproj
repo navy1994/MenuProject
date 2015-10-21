@@ -30,6 +30,8 @@
 		046737271BD0AB0B002E2665 /* HomeEndCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046737261BD0AB0B002E2665 /* HomeEndCell.m */; };
 		0467372A1BD0AB43002E2665 /* KnowledgeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 046737291BD0AB43002E2665 /* KnowledgeCellView.m */; };
 		046737301BD0DE82002E2665 /* TapAdvertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467372F1BD0DE82002E2665 /* TapAdvertViewController.m */; };
+		046B6D431BD77AE1003D4A10 /* HotTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046B6D421BD77AE1003D4A10 /* HotTableViewCell.m */; };
+		046B6D461BD77AF0003D4A10 /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046B6D451BD77AF0003D4A10 /* HistoryTableViewCell.m */; };
 		046D6DA31BD5F6560066A25A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 046D6DA21BD5F6560066A25A /* QuartzCore.framework */; };
 		046D6DBF1BD61C630066A25A /* first_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 046D6DA51BD61C630066A25A /* first_normal.png */; };
 		046D6DC01BD61C630066A25A /* first_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 046D6DA61BD61C630066A25A /* first_normal@2x.png */; };
@@ -116,6 +118,10 @@
 		046737291BD0AB43002E2665 /* KnowledgeCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnowledgeCellView.m; sourceTree = "<group>"; };
 		0467372E1BD0DE82002E2665 /* TapAdvertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapAdvertViewController.h; sourceTree = "<group>"; };
 		0467372F1BD0DE82002E2665 /* TapAdvertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapAdvertViewController.m; sourceTree = "<group>"; };
+		046B6D411BD77AE1003D4A10 /* HotTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotTableViewCell.h; sourceTree = "<group>"; };
+		046B6D421BD77AE1003D4A10 /* HotTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotTableViewCell.m; sourceTree = "<group>"; };
+		046B6D441BD77AF0003D4A10 /* HistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewCell.h; sourceTree = "<group>"; };
+		046B6D451BD77AF0003D4A10 /* HistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewCell.m; sourceTree = "<group>"; };
 		046D6DA21BD5F6560066A25A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		046D6DA51BD61C630066A25A /* first_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first_normal.png; sourceTree = "<group>"; };
 		046D6DA61BD61C630066A25A /* first_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first_normal@2x.png"; sourceTree = "<group>"; };
@@ -268,6 +274,7 @@
 		04615AF31BCF987900EF596F /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				046B6D401BD77AA5003D4A10 /* HomeSearchCell */,
 				046D6DD81BD6274B0066A25A /* HomeAdvertCell */,
 				04615AF41BCF988900EF596F /* HomeTableCell */,
 				046737191BD0A0AA002E2665 /* GourmetCellView.h */,
@@ -312,6 +319,17 @@
 				046737131BD09694002E2665 /* videoBtn.png */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		046B6D401BD77AA5003D4A10 /* HomeSearchCell */ = {
+			isa = PBXGroup;
+			children = (
+				046B6D411BD77AE1003D4A10 /* HotTableViewCell.h */,
+				046B6D421BD77AE1003D4A10 /* HotTableViewCell.m */,
+				046B6D441BD77AF0003D4A10 /* HistoryTableViewCell.h */,
+				046B6D451BD77AF0003D4A10 /* HistoryTableViewCell.m */,
+			);
+			name = HomeSearchCell;
 			sourceTree = "<group>";
 		};
 		046D6DA41BD61C630066A25A /* Images */ = {
@@ -664,9 +682,11 @@
 				046737271BD0AB0B002E2665 /* HomeEndCell.m in Sources */,
 				046737241BD0AAC3002E2665 /* HomeKnowledgeCell.m in Sources */,
 				0467371B1BD0A0AA002E2665 /* GourmetCellView.m in Sources */,
+				046B6D461BD77AF0003D4A10 /* HistoryTableViewCell.m in Sources */,
 				04615AF21BCF8E8000EF596F /* NetworkSingleton.m in Sources */,
 				04615AE51BCF80CA00EF596F /* UISearchView.m in Sources */,
 				04B5C80F1BCBA11800AA5E1A /* HomeViewController.m in Sources */,
+				046B6D431BD77AE1003D4A10 /* HotTableViewCell.m in Sources */,
 				04B5C8151BCBA13800AA5E1A /* SurpriseViewController.m in Sources */,
 				046D6DDE1BD632D00066A25A /* TapSearchViewController.m in Sources */,
 				04B5C8181BCBA14700AA5E1A /* MineViewController.m in Sources */,
