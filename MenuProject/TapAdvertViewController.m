@@ -33,13 +33,15 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
+    self.navigationController.navigationBar.alpha = 0;
     [super viewWillDisappear:animated];
 }
 
 - (void)viewDidLoad {
-    
+    NSLog(@"Advert:%f",self.navigationController.navigationBar.alpha);
     
     [super viewDidLoad];
+    self.navigationController.navigationBar.alpha = 1;
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.title = @"今日推荐";
     // Tying up the segmented control to a scroll view

@@ -52,23 +52,19 @@ const CGFloat LSWHeaderViewHeight = 200;
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     NSLog(@"viewWillApper");
-    //重新加载
-    [self setupUI];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     NSLog(@"viewDidapper");
-//    //重新加载
-//    [self setupUI];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"viewDidLoad");
     [self setupUI];
-    
     //[self getAdvertImageData];
+    
+    NSLog(@"viewDidLoad %f",self.navigationController.navigationBar.alpha);
     
 }
 
@@ -142,7 +138,6 @@ const CGFloat LSWHeaderViewHeight = 200;
 
 {
     TapSearchViewController *searchViewController = [[TapSearchViewController alloc]init];
-    self.navigationController.navigationBar.alpha = 1;
     [self.navigationController pushViewController:searchViewController animated:NO];
     
 }
