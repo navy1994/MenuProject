@@ -57,6 +57,7 @@
                 btn.titleLabel.font = [UIFont boldSystemFontOfSize:15];
                 btn.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
                 btn.layer.borderWidth = 1.0f;
+                btn.tag = index*100;
                 [self.contentView addSubview:btn];
             }
         }

@@ -13,6 +13,7 @@
 
 #import "HotTableViewCell.h"
 #import "HistoryTableViewCell.h"
+#import "SearchDetailTableViewCell.h"
 
 
 
@@ -60,11 +61,25 @@
     [_textField becomeFirstResponder];
     self.navigationItem.titleView = _textField;
     
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screen_width, 30)];
+    [self.view addSubview:view];
+    
+    /**
+     *  设置tableView
+     */
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, screen_width, screen_height) style:_style];
+    [self.view addSubview:_tableView];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    _tableView.sectionHeaderHeight = 0;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.tableHeaderView = view;
+    
     /**
      *  设置segmentController
      */
     HMSegmentedControl *segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"全部", @"食材", @"菜谱", @"菜单", @"相克／宜搭", @"健康养生", @"美食知识", @"美食贴", @"哈友"]];
-    [self.view addSubview:segmentedControl];
+    [view addSubview:segmentedControl];
     [segmentedControl mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.and.left.and.right.equalTo(self.view).with.offset(0);
         make.height.mas_equalTo(@30);
@@ -81,21 +96,7 @@
     segmentedControl.selectionIndicatorColor = RGB(240, 70, 73);
     segmentedControl.selectionIndicatorHeight = 2.0f;
     [segmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
-    
-    
-    /**
-     *  设置tableView
-     */
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 30, screen_width, screen_height-segmentedControl.frame.origin.y+segmentedControl.frame.size.height) style:UITableViewStyleGrouped];
-    [self.view addSubview:_tableView];
-    _tableView.dataSource = self;
-    _tableView.delegate = self;
-    _tableView.tableHeaderView = nil;
-    _tableView.sectionHeaderHeight = 0;
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    
-    
+ 
 }
 #pragma mark -- SegmentDelegate
 - (void)segmentedControlChangedValue:(HMSegmentedControl *)segmentedControl {
@@ -115,21 +116,64 @@
 #pragma mark --- UITableViewDatabase and Delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    if (self.isSearch) {
+        return 1;
+    }else{
+        return 3;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    if (self.isSearch) {
+        return 10;
+    }else{
+        return 1;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSArray *height = @[@100, @190, @40];
-    return [[height objectAtIndex:indexPath.section]floatValue];
-    //return 150;
+    NSArray *heightRows = @[@100, @190, @40];
+    if (self.isSearch) {
+        return 90;
+    }else{
+        return [[heightRows objectAtIndex:indexPath.section]floatValue];
+    }
+    
 }
 
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+   
+    if (self.isSearch) {
+        static NSString *cellIndentifier = @"nomorecell";
+        SearchDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
+        for (UIView *view in cell.contentView.subviews) {
+            if (view) {
+                [view removeFromSuperview];
+            }
+        }
+        [cell sizeToFit];
+        cell.backgroundColor = [UIColor whiteColor];
+        if (cell == nil) {
+            cell = [[SearchDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
+        }
+//        cell.imageView.image = [UIImage imageNamed:@"advert3"];
+//        cell.titleLabel.text = @"豆浆";
+//        cell.tags.text = @"很好喝";
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        cell.textLabel.text = @"豆浆";
+        NSLog(@"reload");
+        return cell;
+
+    }else{
+        NSLog(@"*****");
+        return [self isSearchTableView:tableView cellForRowAtIndexPath:indexPath];
+    }
+}
+
+- (UITableViewCell*)isSearchTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     if (indexPath.section == 0) {
         static NSString *cellIndentifier = @"nomorecell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
@@ -139,17 +183,18 @@
         UIButton *videoBtn = [UIButton new];
         [cell.contentView addSubview:videoBtn];
         [videoBtn mas_makeConstraints:^(MASConstraintMaker *make){
-            make.top.and.bottom.equalTo(cell.contentView).with.offset(0);
+            make.top.equalTo(cell.contentView).with.offset(10);
+             make.bottom.equalTo(cell.contentView).with.offset(0);
             make.left.equalTo(cell.contentView).with.offset(10);
             make.right.equalTo(cell.contentView).with.offset(-10);
         }];
         [videoBtn setImage:[UIImage imageNamed:@"videoBtn"] forState:UIControlStateNormal];
         cell.backgroundColor = [UIColor clearColor];
-
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
-
+        
     }else if (indexPath.section == 1){
         
         static NSString *cellIndentifier = @"nomorecell";
@@ -157,6 +202,8 @@
         if (cell == nil) {
             cell = [[HotTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
         }
+        UIButton *btn = (UIButton*)[cell.contentView viewWithTag:200];
+        [btn addTarget:self action:@selector(clickBtnToDetail:) forControlEvents:UIControlEventTouchUpInside];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
         
@@ -170,9 +217,21 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
-
+        
     }
    
+}
+
+- (void)clickBtnToDetail:(UIButton*)sender{
+    [_textField resignFirstResponder];
+    NSLog(@"%@",sender.titleLabel.text);
+    self.isSearch = YES;
+    self.style = UITableViewStylePlain;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    _textField.text = sender.titleLabel.text;
+    [_textField reloadInputViews];
+    [_tableView reloadData];
+    //[_tableView reloadInputViews];
 }
 
 

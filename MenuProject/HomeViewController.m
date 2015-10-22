@@ -106,7 +106,7 @@ const CGFloat LSWHeaderViewHeight = 200;
     
     [_rollingBannerVC addBannerTapHandler:^(NSInteger whichIndex) {
         TapAdvertViewController *tapViewController = [[TapAdvertViewController alloc]init];
-
+        
         [self.navigationItem.titleView setHidden:YES];
         [self.navigationController pushViewController:tapViewController animated:YES];
         
@@ -137,7 +137,8 @@ const CGFloat LSWHeaderViewHeight = 200;
 
 {
     TapSearchViewController *searchViewController = [[TapSearchViewController alloc]init];
-
+    searchViewController.isSearch = NO;
+    searchViewController.style = UITableViewStyleGrouped;
     [self.navigationItem.titleView setHidden:YES];
     [self.navigationController pushViewController:searchViewController animated:YES];
     

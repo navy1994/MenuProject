@@ -10,5 +10,7 @@
 
 @interface TapSearchViewController : UIViewController
 
+@property (nonatomic)  BOOL isSearch;
+@property (nonatomic)  UITableViewStyle style;
 
 @end
