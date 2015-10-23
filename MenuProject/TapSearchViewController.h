@@ -11,6 +11,8 @@
 @interface TapSearchViewController : UIViewController
 
 @property (nonatomic)  BOOL isSearch;
-@property (nonatomic)  UITableViewStyle style;
+@property (nonatomic, strong) NSString *textFiledString;
+
+@property (nonatomic, strong) UITextField *textField;
 
 @end

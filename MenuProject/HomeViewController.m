@@ -138,7 +138,7 @@ const CGFloat LSWHeaderViewHeight = 200;
 {
     TapSearchViewController *searchViewController = [[TapSearchViewController alloc]init];
     searchViewController.isSearch = NO;
-    searchViewController.style = UITableViewStyleGrouped;
+
     [self.navigationItem.titleView setHidden:YES];
     [self.navigationController pushViewController:searchViewController animated:YES];
     
@@ -199,6 +199,11 @@ const CGFloat LSWHeaderViewHeight = 200;
         if (cell == nil) {
             cell = [[HomeCategoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
         }
+        for (int i=1; i<13; i++) {
+            UIButton *categoryBtn = (UIButton*)[cell.contentView viewWithTag:i*100];
+            [categoryBtn addTarget:self action:@selector(clickCategoryBtn:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
         
@@ -254,6 +259,15 @@ const CGFloat LSWHeaderViewHeight = 200;
     }
 }
 
+- (void)clickCategoryBtn:(UIButton*)sender{
+    TapSearchViewController *searchViewController = [[TapSearchViewController alloc]init];
+    searchViewController.isSearch = YES;
+    searchViewController.textFiledString = sender.titleLabel.text;
+    [searchViewController.textField resignFirstResponder];
+    [self.navigationItem.titleView setHidden:YES];
+    [self.navigationController pushViewController:searchViewController animated:YES];
+}
+
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat yOffset  = scrollView.contentOffset.y;
@@ -273,6 +287,7 @@ const CGFloat LSWHeaderViewHeight = 200;
 //        alpha = alpha < 0.5 ? 0.5 : alpha;
 //        _rollingBannerVC.view.alpha = alpha;
 }
+
 
 
 

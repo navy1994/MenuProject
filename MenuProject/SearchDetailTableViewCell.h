@@ -10,15 +10,11 @@
 
 @interface SearchDetailTableViewCell : UITableViewCell
 
-//@property (nonatomic, strong) UIImageView *imageView;
-//@property (nonatomic, strong) UILabel *titleLB;
-//@property (nonatomic, strong) UILabel *tipsLB;
-//@property (nonatomic, strong) UILabel *stepLB;
-//@property (nonatomic, strong) UILabel *browseLB;
-//@property (nonatomic, strong) UILabel *collectLB;
-
-//@property(nonatomic,strong) UILabel *titleLabel;
-//@property(nonatomic,strong) UIImageView *imageView;
-//@property(nonatomic,strong) UILabel *tags;
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UILabel *titleLB;
+@property (nonatomic, strong) UILabel *tipsLB;
+@property (nonatomic, strong) UILabel *stepLB;
+@property (nonatomic, strong) UILabel *browseLB;
+@property (nonatomic, strong) UILabel *collectLB;
 
 @end

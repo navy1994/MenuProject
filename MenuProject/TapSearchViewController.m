@@ -19,8 +19,9 @@
 
 @interface TapSearchViewController ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate>
 
-@property (nonatomic, strong) UITextField *textField;
-@property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic, strong) UITableView *tableView1;
+@property (nonatomic, strong) UITableView *tableView2;
 
 @end
 
@@ -51,35 +52,64 @@
     self.textField = [[UITextField alloc]initWithFrame:CGRectMake(40, 0, screen_width-80, 30)];
     _textField.delegate = self;
     _textField.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    _textField.placeholder = @"搜菜谱、食材、相克、知识等";
     _textField.layer.masksToBounds = YES;
     _textField.layer.cornerRadius = 5;
     _textField.clearsOnBeginEditing = YES;
     _textField.adjustsFontSizeToFitWidth = YES;
+    _textField.placeholder = @"搜菜谱、食材、相克、知识等";
     _textField.clearButtonMode = UITextFieldViewModeAlways;
     _textField.returnKeyType = UIReturnKeySearch;
-    [_textField becomeFirstResponder];
+    
+    if (_textFiledString) {
+        _textField.text = _textFiledString;
+    }
+    
     self.navigationItem.titleView = _textField;
     
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screen_width, 30)];
-    [self.view addSubview:view];
+    /**
+     *  设置tableView1 ------  搜索推荐列表
+     */
+    self.tableView1 = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, screen_width, screen_height) style:UITableViewStyleGrouped];
+    [self.view addSubview:_tableView1];
+    _tableView1.dataSource = self;
+    _tableView1.delegate = self;
+    _tableView1.sectionHeaderHeight = 0;
+    _tableView1.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [_tableView1.tableHeaderView removeFromSuperview];
     
     /**
-     *  设置tableView
+     *  设置tableView2 ------  搜索详情列表
      */
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, screen_width, screen_height) style:_style];
-    [self.view addSubview:_tableView];
-    _tableView.dataSource = self;
-    _tableView.delegate = self;
-    _tableView.sectionHeaderHeight = 0;
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _tableView.tableHeaderView = view;
+    self.tableView2 = [[UITableView alloc]initWithFrame:CGRectMake(0, 30, screen_width, screen_height) style:UITableViewStylePlain];
+    [self.view addSubview:_tableView2];
+    _tableView2.dataSource = self;
+    _tableView2.delegate = self;
+    [_tableView2.tableHeaderView removeFromSuperview];
+    
+    if (_isSearch) {
+        [_tableView2 setHidden:NO];
+        [_tableView1 setHidden:YES];
+    }else{
+        [_tableView2 setHidden:YES];
+        [_tableView1 setHidden:NO];
+        [_textField becomeFirstResponder];
+    }
     
     /**
      *  设置segmentController
      */
+    [self initSegmentController];
+}
+
+/**
+ *  设置segmentController
+ *
+ *  @return void
+ */
+
+- (void)initSegmentController{
     HMSegmentedControl *segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"全部", @"食材", @"菜谱", @"菜单", @"相克／宜搭", @"健康养生", @"美食知识", @"美食贴", @"哈友"]];
-    [view addSubview:segmentedControl];
+    [self.view addSubview:segmentedControl];
     [segmentedControl mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.and.left.and.right.equalTo(self.view).with.offset(0);
         make.height.mas_equalTo(@30);
@@ -96,8 +126,8 @@
     segmentedControl.selectionIndicatorColor = RGB(240, 70, 73);
     segmentedControl.selectionIndicatorHeight = 2.0f;
     [segmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
- 
 }
+
 #pragma mark -- SegmentDelegate
 - (void)segmentedControlChangedValue:(HMSegmentedControl *)segmentedControl {
     NSLog(@"Selected index %ld (via UIControlEventValueChanged)", (long)segmentedControl.selectedSegmentIndex);
@@ -114,9 +144,9 @@
 }
 
 #pragma mark --- UITableViewDatabase and Delegate
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    if (self.isSearch) {
+    
+    if (tableView == _tableView2) {
         return 1;
     }else{
         return 3;
@@ -124,7 +154,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (self.isSearch) {
+    if (tableView == _tableView2) {
         return 10;
     }else{
         return 1;
@@ -133,7 +163,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSArray *heightRows = @[@100, @190, @40];
-    if (self.isSearch) {
+    if (tableView == _tableView2) {
         return 90;
     }else{
         return [[heightRows objectAtIndex:indexPath.section]floatValue];
@@ -144,26 +174,23 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
    
-    if (self.isSearch) {
+    if (tableView == _tableView2) {
         static NSString *cellIndentifier = @"nomorecell";
         SearchDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
-        for (UIView *view in cell.contentView.subviews) {
-            if (view) {
-                [view removeFromSuperview];
-            }
-        }
-        [cell sizeToFit];
-        cell.backgroundColor = [UIColor whiteColor];
+        
         if (cell == nil) {
             cell = [[SearchDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
         }
-//        cell.imageView.image = [UIImage imageNamed:@"advert3"];
-//        cell.titleLabel.text = @"豆浆";
-//        cell.tags.text = @"很好喝";
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        cell.textLabel.text = @"豆浆";
-        NSLog(@"reload");
+        cell.imageView.image = [UIImage imageNamed:@"advert3"];
+        cell.titleLB.text = @"豆浆";
+        cell.tipsLB.text = @"很好喝";
+        cell.browseLB.text = @"34664浏览";
+        cell.collectLB.text = @"65553收藏";
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.backgroundColor = [UIColor whiteColor];
         return cell;
 
     }else{
@@ -183,7 +210,7 @@
         UIButton *videoBtn = [UIButton new];
         [cell.contentView addSubview:videoBtn];
         [videoBtn mas_makeConstraints:^(MASConstraintMaker *make){
-            make.top.equalTo(cell.contentView).with.offset(10);
+            make.top.equalTo(cell.contentView).with.offset(15);
              make.bottom.equalTo(cell.contentView).with.offset(0);
             make.left.equalTo(cell.contentView).with.offset(10);
             make.right.equalTo(cell.contentView).with.offset(-10);
@@ -225,13 +252,9 @@
 - (void)clickBtnToDetail:(UIButton*)sender{
     [_textField resignFirstResponder];
     NSLog(@"%@",sender.titleLabel.text);
-    self.isSearch = YES;
-    self.style = UITableViewStylePlain;
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     _textField.text = sender.titleLabel.text;
-    [_textField reloadInputViews];
-    [_tableView reloadData];
-    //[_tableView reloadInputViews];
+    [_tableView1 setHidden:YES];
+    [_tableView2 setHidden:NO];
 }
 
 
