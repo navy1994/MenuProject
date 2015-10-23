@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		045870241BDA1223002D79A7 /* ico_make.png in Resources */ = {isa = PBXBuildFile; fileRef = 045870211BDA1223002D79A7 /* ico_make.png */; };
+		045870251BDA1223002D79A7 /* JSDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 045870231BDA1223002D79A7 /* JSDropDownMenu.m */; };
 		045DA2E61BD8B69900B839A5 /* SearchDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045DA2E51BD8B69900B839A5 /* SearchDetailViewController.m */; };
 		046088EC1BCB876E00A57899 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 046088EB1BCB876E00A57899 /* main.m */; };
 		046088EF1BCB876E00A57899 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 046088EE1BCB876E00A57899 /* AppDelegate.m */; };
@@ -82,6 +84,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		045870211BDA1223002D79A7 /* ico_make.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_make.png; sourceTree = "<group>"; };
+		045870221BDA1223002D79A7 /* JSDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDropDownMenu.h; sourceTree = "<group>"; };
+		045870231BDA1223002D79A7 /* JSDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDropDownMenu.m; sourceTree = "<group>"; };
 		045DA2E41BD8B69900B839A5 /* SearchDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchDetailViewController.h; sourceTree = "<group>"; };
 		045DA2E51BD8B69900B839A5 /* SearchDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchDetailViewController.m; sourceTree = "<group>"; };
 		046088E61BCB876E00A57899 /* MenuProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenuProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,6 +201,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		045870201BDA1223002D79A7 /* JSDropDownMenu */ = {
+			isa = PBXGroup;
+			children = (
+				045870211BDA1223002D79A7 /* ico_make.png */,
+				045870221BDA1223002D79A7 /* JSDropDownMenu.h */,
+				045870231BDA1223002D79A7 /* JSDropDownMenu.m */,
+			);
+			path = JSDropDownMenu;
+			sourceTree = "<group>";
+		};
 		046088DD1BCB876E00A57899 = {
 			isa = PBXGroup;
 			children = (
@@ -379,6 +394,7 @@
 		0475BB781BCE3C98006F8043 /* depends */ = {
 			isa = PBXGroup;
 			children = (
+				045870201BDA1223002D79A7 /* JSDropDownMenu */,
 				0475BB751BCE3C93006F8043 /* UIImage+UIColor.h */,
 				0475BB761BCE3C93006F8043 /* UIImage+UIColor.m */,
 			);
@@ -624,6 +640,7 @@
 				04615AE71BCF823E00EF596F /* icon_homepage_search.png in Resources */,
 				046D6DD21BD61C630066A25A /* third_selected@2x.png in Resources */,
 				0475BB821BCE3D43006F8043 /* advert3.png in Resources */,
+				045870241BDA1223002D79A7 /* ico_make.png in Resources */,
 				046D6DCD1BD61C630066A25A /* tabbar_selected_background.png in Resources */,
 				046D6DCC1BD61C630066A25A /* tabbar_normal_background@2x.png in Resources */,
 				046D6DC81BD61C630066A25A /* second_normal@2x.png in Resources */,
@@ -696,6 +713,7 @@
 				045DA2E61BD8B69900B839A5 /* SearchDetailViewController.m in Sources */,
 				046B6D461BD77AF0003D4A10 /* HistoryTableViewCell.m in Sources */,
 				04615AF21BCF8E8000EF596F /* NetworkSingleton.m in Sources */,
+				045870251BDA1223002D79A7 /* JSDropDownMenu.m in Sources */,
 				04615AE51BCF80CA00EF596F /* UISearchView.m in Sources */,
 				04B5C80F1BCBA11800AA5E1A /* HomeViewController.m in Sources */,
 				046B6D431BD77AE1003D4A10 /* HotTableViewCell.m in Sources */,
