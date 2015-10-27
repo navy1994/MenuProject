@@ -31,6 +31,7 @@ const CGFloat LSWHeaderViewHeight = 200;
     UIButton *_videoBtn;
     
     UIActivityIndicatorView *_activityView;
+    TapSearchViewController *searchViewController;
 }
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -61,9 +62,9 @@ const CGFloat LSWHeaderViewHeight = 200;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
-//    [self getAdvertImageData];
-//    [self initSortData];
-//    [self initSortMenuDataForID];
+    [self getAdvertImageData];
+    [self initSortData];
+    [self initSortMenuDataForID];
 }
 
 - (void)setupUI{
@@ -296,19 +297,18 @@ const CGFloat LSWHeaderViewHeight = 200;
 
 - (void)clickCategoryBtn:(UIButton*)sender{
     if (sender.tag !=12*100) {
-        TapSearchViewController *searchViewController = [[TapSearchViewController alloc]init];
+        searchViewController = [[TapSearchViewController alloc]init];
+        
         searchViewController.isSearch = YES;
         searchViewController.textFiledString = sender.titleLabel.text;
         [searchViewController.textField resignFirstResponder];
         [self.navigationItem.titleView setHidden:YES];
-        [self.navigationController pushViewController:searchViewController animated:YES];
+        [self initSearchData:sender.titleLabel.text];
+        
     }else{
         
         DropDownViewController *dropDownViewController = [[DropDownViewController alloc]init];
         [self.navigationItem.titleView setHidden:YES];
-//        NSLog(@"*********************************");
-//        NSLog(@"data:%@",_sortMenuName);
-//        NSLog(@"select:%@",_menuForSort);
         dropDownViewController.data = _sortMenuName;
         dropDownViewController.isClassity = NO;
         dropDownViewController.currentData1Index = 0;
@@ -320,6 +320,31 @@ const CGFloat LSWHeaderViewHeight = 200;
     }
     
 }
+
+- (void)initSearchData:(NSString *)menuString{
+    NSString *urlStr = [NSString stringWithFormat:@"http://apis.juhe.cn/cook/query?key=%s&menu=%@&rn=10&pn=3",appkey,menuString];
+    [_activityView startAnimating];
+    [[NetworkSingleton sharedManager] getShopResult:nil url:urlStr successBlock:^(id responseBody){
+        
+        [self getSearchData:[[responseBody objectForKey:@"result"]objectForKey:@"data"]];
+        
+        [_activityView stopAnimating];
+        
+    } failureBlock:^(NSString *error){
+        NSLog(@"店铺详情请求失败：%@",error);
+    }];
+}
+
+- (void)getSearchData:(id)resultData{
+    if (resultData) {
+        searchViewController.menuData = resultData;
+    }else{
+        searchViewController.menuData = nil;
+    }
+    
+    [self.navigationController pushViewController:searchViewController animated:YES];
+}
+
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {

@@ -62,7 +62,7 @@
     NSLog(@"data:%@",_data);
     NSLog(@"select:%@",_menuData);
     
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 35, screen_width, screen_height) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 35, screen_width, screen_height-100) style:UITableViewStylePlain];
     [self.view addSubview:_tableView];
     _tableView.rowHeight = 90;
     _tableView.dataSource = self;
@@ -170,10 +170,15 @@
     if (!cell) {
         cell = [[SearchDetailTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIndetifier];
     }
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:[[[[_menuData objectAtIndex:indexPath.row]objectForKey:@"albums"]objectAtIndex:0] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]
-                      placeholderImage:[UIImage imageNamed:@"placeholder"] options:indexPath.row == 0 ? SDWebImageRefreshCached : 0];
-    cell.titleLB.text = [[_menuData objectAtIndex:indexPath.row]objectForKey:@"title"];
-    cell.tipsLB.text = [[_menuData objectAtIndex:indexPath.row]objectForKey:@"tags"];
+    if (_menuData) {
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:[[[[_menuData objectAtIndex:indexPath.row]objectForKey:@"albums"]objectAtIndex:0] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]
+                          placeholderImage:[UIImage imageNamed:@"placeholder"] options:indexPath.row == 0 ? SDWebImageRefreshCached : 0];
+        cell.titleLB.text = [[_menuData objectAtIndex:indexPath.row]objectForKey:@"title"];
+        cell.tipsLB.text = [[_menuData objectAtIndex:indexPath.row]objectForKey:@"tags"];
+        cell.browseLB.text = @"34664浏览";
+        cell.collectLB.text = @"65553收藏";
+    }
+    
     return cell;
 }
 

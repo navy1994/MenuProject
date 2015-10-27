@@ -14,7 +14,9 @@
 
 
 
-@interface TapSearchViewController ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface TapSearchViewController ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate>{
+    UIActivityIndicatorView *_activityView;
+}
 
 
 @property (nonatomic, strong) UITableView *tableView1;
@@ -77,7 +79,7 @@
     /**
      *  设置tableView2 ------  搜索详情列表
      */
-    self.tableView2 = [[UITableView alloc]initWithFrame:CGRectMake(0, 30, screen_width, screen_height) style:UITableViewStylePlain];
+    self.tableView2 = [[UITableView alloc]initWithFrame:CGRectMake(0, 30, screen_width, screen_height-94) style:UITableViewStylePlain];
     [self.view addSubview:_tableView2];
     _tableView2.dataSource = self;
     _tableView2.delegate = self;
@@ -96,6 +98,23 @@
      *  设置segmentController
      */
     [self initSegmentController];
+    
+    
+    //注册
+    [SDWebImageManager sharedManager].imageDownloader.username = @"httpwatch";
+    [SDWebImageManager sharedManager].imageDownloader.password = @"httpwatch01";
+    //设定图片存储顺序
+    [SDWebImageManager.sharedManager.imageDownloader setValue:@"SDWebImage Demo" forHTTPHeaderField:@"AppName"];
+    SDWebImageManager.sharedManager.imageDownloader.executionOrder = SDWebImageDownloaderLIFOExecutionOrder;
+    
+    if (!_menuData.count) {
+        _tableView2.separatorStyle = UITableViewCellSeparatorStyleNone;
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"无任何记录" message:nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+
+    }else{
+        _tableView2.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    }
 }
 
 /**
@@ -144,6 +163,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
     if (tableView == _tableView2) {
+        
         return 1;
     }else{
         return 3;
@@ -152,7 +172,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (tableView == _tableView2) {
-        return 10;
+        return _menuData.count;
+        
     }else{
         return 1;
     }
@@ -178,12 +199,14 @@
         if (cell == nil) {
             cell = [[SearchDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
         }
-        
-        cell.imageView.image = [UIImage imageNamed:@"advert3"];
-        cell.titleLB.text = @"豆浆";
-        cell.tipsLB.text = @"很好喝";
-        cell.browseLB.text = @"34664浏览";
-        cell.collectLB.text = @"65553收藏";
+        if (_menuData.count) {
+            [cell.imageView sd_setImageWithURL:[NSURL URLWithString:[[[[_menuData objectAtIndex:indexPath.row]objectForKey:@"albums"]objectAtIndex:0] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]
+                              placeholderImage:[UIImage imageNamed:@"placeholder"] options:indexPath.row == 0 ? SDWebImageRefreshCached : 0];
+            cell.titleLB.text = [[_menuData objectAtIndex:indexPath.row]objectForKey:@"title"];
+            cell.tipsLB.text = [[_menuData objectAtIndex:indexPath.row]objectForKey:@"tags"];
+            cell.browseLB.text = @"34664浏览";
+            cell.collectLB.text = @"65553收藏";
+        }
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

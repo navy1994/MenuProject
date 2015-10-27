@@ -10,6 +10,8 @@
 
 @interface TapSearchViewController : UIViewController
 
+@property (nonatomic,strong) NSArray *menuData;
+
 @property (nonatomic)  BOOL isSearch;
 @property (nonatomic, strong) NSString *textFiledString;
 
