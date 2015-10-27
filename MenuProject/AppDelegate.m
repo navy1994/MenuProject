@@ -15,6 +15,7 @@
 
 #import "RDVTabBarController.h"
 #import "RDVTabBarItem.h"
+#import "SDImageCache.h"
 
 @interface AppDelegate ()
 
@@ -25,6 +26,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    NSString *bundledPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"CustomPathImages"];
+    [[SDImageCache sharedImageCache] addReadOnlyCachePath:bundledPath];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];

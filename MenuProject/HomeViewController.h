@@ -13,4 +13,7 @@
 
 @property (nonatomic, strong) NSMutableArray *advertArray;
 @property (nonatomic, strong) UISearchView *searchView;
+
+@property (nonatomic, strong)  NSArray *sortMenuName;
+@property (nonatomic, strong)  NSDictionary *menuForSort;
 @end

@@ -7,9 +7,6 @@
 //
 
 #import "TapSearchViewController.h"
-#import "UIImage+UIColor.h"
-#import "HMSegmentedControl.h"
-#import "RDVTabBarController.h"
 
 #import "HotTableViewCell.h"
 #import "HistoryTableViewCell.h"
@@ -194,7 +191,6 @@
         return cell;
 
     }else{
-        NSLog(@"*****");
         return [self isSearchTableView:tableView cellForRowAtIndexPath:indexPath];
     }
 }
@@ -251,7 +247,6 @@
 
 - (void)clickBtnToDetail:(UIButton*)sender{
     [_textField resignFirstResponder];
-    NSLog(@"%@",sender.titleLabel.text);
     _textField.text = sender.titleLabel.text;
     [_tableView1 setHidden:YES];
     [_tableView2 setHidden:NO];

@@ -7,13 +7,12 @@
 //
 #import "TapAdvertViewController.h"
 #import "TapSearchViewController.h"
+#import "DropDownViewController.h"
 
 #import "HomeViewController.h"
-#import "NetworkSingleton.h"
-#import "NetworkSingleton.h"
+
 
 #import <DYMRollingBanner/DYMRollingBannerVC.h>
-#import "UIImage+UIColor.h"
 
 #import "HomeCategoryCell.h"
 #import "HomeGourmetCell.h"
@@ -40,10 +39,10 @@ const CGFloat LSWHeaderViewHeight = 200;
 
 
 
+
 /**
  *  请求数据
  */
-- (void)getAdvertImageData;
 
 @end
 
@@ -62,9 +61,9 @@ const CGFloat LSWHeaderViewHeight = 200;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
-    //[self getAdvertImageData];
-    
-    
+//    [self getAdvertImageData];
+//    [self initSortData];
+//    [self initSortMenuDataForID];
 }
 
 - (void)setupUI{
@@ -97,12 +96,12 @@ const CGFloat LSWHeaderViewHeight = 200;
     [_rollingBannerVC didMoveToParentViewController:self];
     
     _rollingBannerVC.rollingInterval = 5;
-    _rollingBannerVC.rollingImages = @[[UIImage imageNamed:@"advert1"]
-                                       , [UIImage imageNamed:@"advert2"]
-                                       , [UIImage imageNamed:@"advert3"]
-                                       , [UIImage imageNamed:@"advert2"]    // Local Image
-                                       , [UIImage imageNamed:@"advert3"]    // Locak Image
-                                       ];
+//    _rollingBannerVC.rollingImages = @[[UIImage imageNamed:@"advert1"]
+//                                       , [UIImage imageNamed:@"advert2"]
+//                                       , [UIImage imageNamed:@"advert3"]
+//                                       , [UIImage imageNamed:@"advert2"]    // Local Image
+//                                       , [UIImage imageNamed:@"advert3"]    // Locak Image
+//                                       ];
     
     [_rollingBannerVC addBannerTapHandler:^(NSInteger whichIndex) {
         TapAdvertViewController *tapViewController = [[TapAdvertViewController alloc]init];
@@ -144,34 +143,70 @@ const CGFloat LSWHeaderViewHeight = 200;
     
 }
 
-//- (void)getAdvertImageData{
-//    NSString *dayStr = @"早餐";
-//    NSString *urlStr = [NSString stringWithFormat:@"http://apis.juhe.cn/cook/query?key=%s&menu=%@&rn=10&pn=3",appkey,dayStr];
-//    [_activityView startAnimating];
-//    [[NetworkSingleton sharedManager] getShopResult:nil url:urlStr successBlock:^(id responseBody){
-//           // NSLog(@"店铺详情请求成功");
-//           // NSLog(@"result=%@",responseBody);
-//            NSDictionary *result = [responseBody objectForKey:@"result"];
-//            if (result) {
-//                NSLog(@"结果：%@",result);
-//                NSMutableArray *imageArray = [[NSMutableArray alloc]init];
-//                for (int i=0; i<3; i++) {
-//                    UIImage *image = [[[[result objectForKey:@"data"]objectAtIndex:rand()%10]objectForKey:@"albums"]objectAtIndex:0];
-//                    NSLog(@"image%@",image);
-//                    [imageArray addObject:image];
-//                }
-//                
-//                NSLog(@"图片%@",_advertArray);
-//                _rollingBannerVC.rollingImages = imageArray;
-//            }
-//            
-//            [_activityView stopAnimating];
-//            
-//        } failureBlock:^(NSString *error){
-//            NSLog(@"店铺详情请求失败：%@",error);
-//        }];
-//
-//}
+- (void)getAdvertImageData{
+    NSString *dayStr = @"早餐";
+    NSString *urlStr = [NSString stringWithFormat:@"http://apis.juhe.cn/cook/query?key=%s&menu=%@&rn=10&pn=3",appkey,dayStr];
+    [_activityView startAnimating];
+    [[NetworkSingleton sharedManager] getShopResult:nil url:urlStr successBlock:^(id responseBody){
+        
+            NSDictionary *result = [responseBody objectForKey:@"result"];
+            if (result) {
+                NSMutableArray *imageArray = [[NSMutableArray alloc]init];
+                for (int i=0; i<3; i++) {
+                    UIImage *image = [[[[result objectForKey:@"data"]objectAtIndex:rand()%10]objectForKey:@"albums"]objectAtIndex:0];
+                    
+                    [imageArray addObject:image];
+                }
+                
+                
+                _rollingBannerVC.rollingImages = imageArray;
+            }
+            
+            [_activityView stopAnimating];
+            
+        } failureBlock:^(NSString *error){
+            NSLog(@"店铺详情请求失败：%@",error);
+        }];
+
+}
+
+- (void)initSortData{
+    
+        NSString *urlStr = [NSString stringWithFormat:@"http://apis.juhe.cn/cook/category?key=%s",appkey];
+        [_activityView startAnimating];
+        [[NetworkSingleton sharedManager] getShopResult:nil url:urlStr successBlock:^(id responseBody){
+
+            [self getSortData:[responseBody objectForKey:@"result"]];
+                [_activityView stopAnimating];
+            } failureBlock:^(NSString *error){
+                NSLog(@"店铺详情请求失败：%@",error);
+            }];
+
+}
+
+- (void)getSortData:(id)result{
+    self.sortMenuName = [[NSArray alloc]init];
+    _sortMenuName = result;
+    //NSLog(@"_sortMenuName:%@",_sortMenuName);
+}
+
+- (void)initSortMenuDataForID{
+    NSString *urlStr = [NSString stringWithFormat:@"http://apis.juhe.cn/cook/index?key=%s&cid=1",appkey];
+    [_activityView startAnimating];
+    [[NetworkSingleton sharedManager] getShopResult:nil url:urlStr successBlock:^(id responseBody){
+        
+        [self getMenuDataForSort:[responseBody objectForKey:@"result"]];
+        [_activityView stopAnimating];
+    } failureBlock:^(NSString *error){
+        NSLog(@"店铺详情请求失败：%@",error);
+    }];
+
+}
+
+- (void)getMenuDataForSort:(id)result{
+    self.menuForSort = [[NSDictionary alloc]init];
+    _menuForSort = result;
+}
 
 #pragma mark - tableViewDelegate&DataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -260,12 +295,30 @@ const CGFloat LSWHeaderViewHeight = 200;
 }
 
 - (void)clickCategoryBtn:(UIButton*)sender{
-    TapSearchViewController *searchViewController = [[TapSearchViewController alloc]init];
-    searchViewController.isSearch = YES;
-    searchViewController.textFiledString = sender.titleLabel.text;
-    [searchViewController.textField resignFirstResponder];
-    [self.navigationItem.titleView setHidden:YES];
-    [self.navigationController pushViewController:searchViewController animated:YES];
+    if (sender.tag !=12*100) {
+        TapSearchViewController *searchViewController = [[TapSearchViewController alloc]init];
+        searchViewController.isSearch = YES;
+        searchViewController.textFiledString = sender.titleLabel.text;
+        [searchViewController.textField resignFirstResponder];
+        [self.navigationItem.titleView setHidden:YES];
+        [self.navigationController pushViewController:searchViewController animated:YES];
+    }else{
+        
+        DropDownViewController *dropDownViewController = [[DropDownViewController alloc]init];
+        [self.navigationItem.titleView setHidden:YES];
+//        NSLog(@"*********************************");
+//        NSLog(@"data:%@",_sortMenuName);
+//        NSLog(@"select:%@",_menuForSort);
+        dropDownViewController.data = _sortMenuName;
+        dropDownViewController.isClassity = NO;
+        dropDownViewController.currentData1Index = 0;
+        dropDownViewController.currentData1SelectedIndex = 0;
+        dropDownViewController.menuData = [_menuForSort objectForKey:@"data"];
+        dropDownViewController.selectMenu = [[[[_sortMenuName objectAtIndex:0]objectForKey:@"list"]objectAtIndex:0]objectForKey:@"name"];
+        [self.navigationController pushViewController:dropDownViewController animated:YES];
+
+    }
+    
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView

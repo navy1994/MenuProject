@@ -7,10 +7,6 @@
 //
 
 #import "TapAdvertViewController.h"
-#import "HMSegmentedControl.h"
-#import "RDVTabBarController.h"
-#import "Masonry.h"
-#import "UIImage+UIColor.h"
 
 #import "AdvertTableViewCell.h"
 
