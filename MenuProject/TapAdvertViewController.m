@@ -39,6 +39,7 @@
     self.navigationController.navigationBar.alpha = 0;
     [super viewWillDisappear:animated];
 }
+
 - (void)viewWillLayoutSubviews{
     
 }

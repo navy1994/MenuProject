@@ -10,4 +10,6 @@
 
 @interface SearchDetailViewController : UIViewController
 
+@property (nonatomic,strong) NSDictionary *detailDic;
+
 @end

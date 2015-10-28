@@ -12,6 +12,8 @@
 #import "HistoryTableViewCell.h"
 #import "SearchDetailTableViewCell.h"
 
+#import "SearchDetailViewController.h"
+
 
 
 @interface TapSearchViewController ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate>{
@@ -30,6 +32,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
+    self.navigationController.navigationBar.alpha = 1;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -41,10 +44,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    
     /**
      *  设置导航栏
      */
-    self.navigationController.navigationBar.alpha = 1;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[RGB(255.0, 255.0, 255.0) colorWithAlphaComponent:1]] forBarMetrics:UIBarMetricsDefault];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"<" style:UIBarButtonItemStyleDone target:self action:@selector(popViewController)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"搜索" style:UIBarButtonItemStyleDone target:self action:@selector(clickBtnToSearch)];
@@ -107,14 +110,14 @@
     [SDWebImageManager.sharedManager.imageDownloader setValue:@"SDWebImage Demo" forHTTPHeaderField:@"AppName"];
     SDWebImageManager.sharedManager.imageDownloader.executionOrder = SDWebImageDownloaderLIFOExecutionOrder;
     
-    if (!_menuData.count) {
-        _tableView2.separatorStyle = UITableViewCellSeparatorStyleNone;
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"无任何记录" message:nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-        [alert show];
-
-    }else{
-        _tableView2.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    }
+//    if (!_menuData.count) {
+//        _tableView2.separatorStyle = UITableViewCellSeparatorStyleNone;
+//        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"无任何记录" message:nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+//        [alert show];
+//
+//    }else{
+//        _tableView2.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+//    }
 }
 
 /**
@@ -151,11 +154,17 @@
 
 #pragma mark --- UITextFiledDelegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    _textField.text = textField.text;
     return YES;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
+    _textField.text = textField.text;
+    if (![textField.text isEqualToString:@""]) {
+        [self initSearchData:textField.text];
+    }
+    
     return YES;
 }
 
@@ -248,8 +257,11 @@
         if (cell == nil) {
             cell = [[HotTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
         }
-        UIButton *btn = (UIButton*)[cell.contentView viewWithTag:200];
-        [btn addTarget:self action:@selector(clickBtnToDetail:) forControlEvents:UIControlEventTouchUpInside];
+        for (int i = 1; i < 10; i++) {
+            UIButton *btn = (UIButton*)[cell.contentView viewWithTag:i*100];
+            [btn addTarget:self action:@selector(clickBtnToDetail:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
         
@@ -268,17 +280,60 @@
    
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (tableView == _tableView2) {
+        SearchDetailViewController *detailMenuController = [[SearchDetailViewController alloc]init];
+        detailMenuController.detailDic = [_menuData objectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:detailMenuController animated:YES];
+    }
+}
+
 - (void)clickBtnToDetail:(UIButton*)sender{
     [_textField resignFirstResponder];
     _textField.text = sender.titleLabel.text;
-    [_tableView1 setHidden:YES];
-    [_tableView2 setHidden:NO];
+    if (_textField.text) {
+        [self initSearchData:_textField.text];
+    }
 }
 
 
 - (void)clickBtnToSearch{
     [_textField resignFirstResponder];
+    if (![_textField.text isEqualToString:@""]) {
+        [self initSearchData:_textField.text];
+    }
+
 }
+
+- (void)initSearchData:(NSString *)menuString{
+    NSString *urlStr = [NSString stringWithFormat:@"http://apis.juhe.cn/cook/query?key=%s&menu=%@&rn=10&pn=3",appkey,menuString];
+    [_activityView startAnimating];
+    [[NetworkSingleton sharedManager] getShopResult:nil url:urlStr successBlock:^(id responseBody){
+        if (![responseBody objectForKey:@"\"error_code\""]) {
+            [self getSearchData:[[responseBody objectForKey:@"result"]objectForKey:@"data"]];
+        }else{
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"没有相关数据" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert show];
+        }
+        
+        [_activityView stopAnimating];
+        
+    } failureBlock:^(NSString *error){
+        NSLog(@"店铺详情请求失败：%@",error);
+    }];
+}
+
+- (void)getSearchData:(id)resultData{
+    if (resultData) {
+        _menuData = resultData;
+    }else{
+        _menuData = nil;
+    }
+    [_tableView2 reloadData];
+    [_tableView1 setHidden:YES];
+    [_tableView2 setHidden:NO];
+}
+
 
 - (void)popViewController{
     [_textField resignFirstResponder];

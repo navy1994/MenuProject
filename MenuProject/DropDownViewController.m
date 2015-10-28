@@ -12,6 +12,7 @@
 #import "JSDropDownMenu.h"
 
 #import "SearchDetailTableViewCell.h"
+#import "SearchDetailViewController.h"
 
 @interface DropDownViewController ()<JSDropDownMenuDataSource,JSDropDownMenuDelegate,UITableViewDataSource,UITableViewDelegate>{
     JSDropDownMenu *menu;
@@ -25,6 +26,9 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.title = @"菜谱分类";
+    if (!self.navigationController.navigationBar.alpha) {
+        self.navigationController.navigationBar.alpha = 1;
+    }
     [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
 }
 
@@ -177,9 +181,16 @@
         cell.tipsLB.text = [[_menuData objectAtIndex:indexPath.row]objectForKey:@"tags"];
         cell.browseLB.text = @"34664浏览";
         cell.collectLB.text = @"65553收藏";
+        
     }
-    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+        SearchDetailViewController *detailMenuController = [[SearchDetailViewController alloc]init];
+        detailMenuController.detailDic = [_menuData objectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:detailMenuController animated:YES];
 }
 
 
